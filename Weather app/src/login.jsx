@@ -39,7 +39,7 @@ function Login() {
                     
                 </div>
 
-                <h3>Dont have an account? <span><a href="#">Sign Up</a></span></h3>
+                <h3>Don't have an account? <span><a href="#">Sign Up</a></span></h3>
 
             </div>
         

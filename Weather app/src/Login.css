@@ -4,7 +4,7 @@
 
 body {
     font-family: "Inter", sans-serif;
-    background-color: #f7faff;
+    background-color: var(--background-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,7 +31,6 @@ h3{
     width: 40px;
     margin-right: 10px;
 }
-
 
 .card {
     width: 470px;
@@ -66,7 +65,6 @@ input::placeholder {
     color: #e3e5ec;
 }
 
-
 button {
     display: flex;
     align-items: center;
@@ -87,7 +85,7 @@ button {
 }
 
 button:hover {
-    background-color: #646cff;
+    background-color: var(--purp);
 }
 
 button:focus,
@@ -125,10 +123,16 @@ button:focus-visible {
 }
 
 .altOptions button:hover{
-    border: 2.5px solid #646cff;
+    border: 2.5px solid var(--purp);
 }
 
 button img {
     width: 25px;
     margin: 3px 8px;
+}
+
+/* Global Variables */
+:root{
+    --background-color: #f7faff;
+    --purp: #646cff;
 }

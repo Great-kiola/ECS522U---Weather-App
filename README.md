@@ -1,2 +1,36 @@
 # ECS522U---Weather-App
-This is a web app project for ecs522u which is a weather webAPP
+
+This is a Weather app project for graphical and user interface module code: ECS522U, The task is to design a weather app for our primary users which is commuters.
+
+## Installation
+
+Install my-project with npm
+
+```bash
+  npm install my-project
+  cd weather App
+```
+    
+## Authors
+
+- [@Ola](https://www.github.com/great-kiola)
+- [@???](https://www.github.com/????)
+
+
+## Features
+
+- Displays weather in beautiful format
+- Fullscreen mode
+- Mobile responsive
+- Light/dark mode toggle
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Screenshots
+
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+

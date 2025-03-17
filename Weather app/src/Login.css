@@ -1,0 +1,75 @@
+/* This is the css for the login page */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: #f7faff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 2.3rem;
+}
+
+
+.card {
+    width: 400px;
+    height: 600px;
+    background-color: #fff;
+    box-shadow: 10px 5px 5px #e9eff2;
+    padding: 35px;
+}
+
+.inputs {
+    width: 100%;
+    margin-top: 30px;
+}
+
+input {
+    padding: 1.3em 1em;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 15px;
+    border: 2px solid #ccc;
+    background-color: #fcfcfc;
+
+}
+
+.inputs p {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+input::placeholder {
+    font-size: 1.2rem;
+    color: #e3e5ec;
+}
+
+
+button {
+    border-radius: 8px;
+    border: 1px solid transparent;
+    padding: 0.6em 1.2em;
+    font-size: 1.1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #1a1a1a;
+    cursor: pointer;
+    transition: background-color 0.25s;
+    color: #f9f9f9;
+    width: 100%;
+    margin: 30px auto;
+    padding: 1.2em;
+}
+
+button:hover {
+    background-color: #646cff;
+}
+
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}

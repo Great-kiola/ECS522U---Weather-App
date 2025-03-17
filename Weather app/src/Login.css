@@ -12,12 +12,29 @@ body {
 
 h1 {
     font-size: 2.3rem;
+    font-weight: 600;
+}
+
+h3{
+    font-weight: 400;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.weatherLogo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.weatherLogo img{
+    width: 40px;
+    margin-right: 10px;
 }
 
 
 .card {
-    width: 400px;
-    height: 600px;
+    width: 470px;
     background-color: #fff;
     box-shadow: 10px 5px 5px #e9eff2;
     padding: 35px;
@@ -25,16 +42,17 @@ h1 {
 
 .inputs {
     width: 100%;
-    margin-top: 30px;
+    margin: 20px auto 45px;
 }
 
 input {
-    padding: 1.3em 1em;
+    padding: 1em 1em;
     box-sizing: border-box;
     width: 100%;
     border-radius: 15px;
     border: 2px solid #ccc;
     background-color: #fcfcfc;
+    font-size: 1.1rem;
 
 }
 
@@ -50,10 +68,13 @@ input::placeholder {
 
 
 button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 8px;
     border: 1px solid transparent;
-    padding: 0.6em 1.2em;
-    font-size: 1.1em;
+    padding: 1em;
+    font-size: 1em;
     font-weight: 500;
     font-family: inherit;
     background-color: #1a1a1a;
@@ -61,7 +82,7 @@ button {
     transition: background-color 0.25s;
     color: #f9f9f9;
     width: 100%;
-    margin: 30px auto;
+    margin: 10px auto;
     padding: 1.2em;
 }
 
@@ -72,4 +93,42 @@ button:hover {
 button:focus,
 button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
+}
+
+.divider {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    margin: 30px auto 1px;
+}
+
+.divider::before,
+.divider::after {
+    flex: 1;
+    content: '';
+    padding: 1px;
+    background-color: #ccc;
+    margin: 10px;
+}
+
+
+.altOptions {
+    margin-top: 40px;
+}
+
+.altOptions button{
+    background-color: #fcfcfc;
+    border: 1px solid #ccc;
+    color: #1a1a1a;
+    padding: 15px;
+    transition: border 0.1s;
+}
+
+.altOptions button:hover{
+    border: 2.5px solid #646cff;
+}
+
+button img {
+    width: 25px;
+    margin: 3px 8px;
 }

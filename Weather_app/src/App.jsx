@@ -35,7 +35,7 @@ function App() {
           <h2>Getting the weather for {city}</h2>
 
           {/* <h2>Location : {weatherDetails?.city}</h2> */}
-          <h2>Temp : {weatherDetails?.main.temp}</h2>
+          <h2> Temp : {weatherDetails?.main.temp} </h2>
           <h2>Pressure : {weatherDetails?.main.pressure}</h2>
           <h2>feels Like : {weatherDetails?.main.feels_like}</h2>
           <h2>description : {weatherDetails?.weather[0].description}</h2>

@@ -39,6 +39,20 @@ h3{
     padding: 35px;
 }
 
+.infoBar{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.infoBar p.err{
+    font-size: 1.1rem;
+}
+
+.err{
+    color: var(--errRed);
+}
+
 .inputs {
     width: 100%;
     margin: 20px auto 45px;
@@ -136,4 +150,7 @@ button img {
     --purp: #646cff;
     --logoBlue: #2D7FBE;
     --logoBlueLight: #99CAEF;
+    --errRed: #C1292E;
+    --validGreen: #53DD6C;
+    /* --errRed: #F95738; */
 }

@@ -15,11 +15,19 @@ function Login() {
                 <h1>Sign in</h1>
 
                 <div className='inputs'>
-                    <p>Email</p>
+
+                    <div className='infoBar'>
+                        <p>Email</p>
+                        <p className='err'> Please enter a valid email</p>
+                    </div>
                     <input type="text" placeholder='******@anymail.com' />
 
-                    <p>Password</p>
+                    <div className='infoBar'>
+                        <p>Password</p>
+                        <p className='err'> Please enter a valid password</p>
+                    </div>
                     <input type="text" placeholder='Enter your password' />
+                
                 </div>
 
                 <button>Sign in</button>

@@ -3,7 +3,14 @@ import google_icon from "./assets/google.svg"
 import facebook_icon from "./assets/facebook.svg"
 import logo from "/public/rainy-day.png"
 
+
+
 function Login() {
+ 
+    const handleClick = () => {
+        alert("button clicked!")
+    }
+
     return (
         <>
             <div className='card'>
@@ -17,20 +24,20 @@ function Login() {
                 <div className='inputs'>
 
                     <div className='infoBar'>
-                        <p>Email</p>
+                        <label>Email</label>
                         <p className='err'> Please enter a valid email</p>
                     </div>
-                    <input type="text" placeholder='******@anymail.com' />
+                    <input type="text" placeholder='******@anymail.com' className='inputErr'/>
 
                     <div className='infoBar'>
-                        <p>Password</p>
+                        <label>Password</label>
                         <p className='err'> Please enter a valid password</p>
                     </div>
-                    <input type="text" placeholder='Enter your password' />
+                    <input type="text" placeholder='Enter your password' className='inputErr' />
                 
                 </div>
 
-                <button>Sign in</button>
+                <button type='submit' onClick={handleClick}>Sign in</button>
 
                 <div className="divider">or</div> 
 
@@ -56,4 +63,4 @@ function Login() {
 }
 
 
-export default Login
+export default Login;

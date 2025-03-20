@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css'
-import Axios from 'axios';
+import Axios from 'axios'; 
+import Login from './login';
 
 
 // ! Dont delete
@@ -30,6 +31,9 @@ function App() {
 
   return (
     <>
+
+    <Login/>
+    
       <button onClick={fetchData} > Get Location</button>
         <div className='details'>
           <h2>Getting the weather for {city}</h2>

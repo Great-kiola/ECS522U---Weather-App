@@ -1,15 +1,68 @@
+// Package Import
+import React , {useState, useEffect}  from 'react'
+
+// Other imports
 import './Login.css'
 import google_icon from "./assets/google.svg"
 import facebook_icon from "./assets/facebook.svg"
-import logo from "/public/rainy-day.png"
+import logo from "/rainy-day.png"
 
 
 
-function Login() {
+export default function Login() {
  
-    const handleClick = () => {
-        alert("button clicked!")
+    const initialForm = {
+        email: "",
+        pass: ""
     }
+
+    // State management
+    const [form, setForm] = useState(initialForm)
+    const [formErr, setFormErr] = useState({})
+    const [isSubmit, setIsSubmit] = useState(false);
+
+    
+    const handleChange = (e) => {
+        const {name, value} = e.target;
+
+        setForm({...form, [name]: value})
+        // setForm((preform) => ({
+        //     ...preform,
+        //     [name]: value,
+        // }))
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(form)
+        setFormErr(validate(form))
+        setIsSubmit(true)
+    }
+
+    const validate = (values) => {
+        const errors = {}
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+        if(!values.password){
+            errors.password = "Password is required"
+        }
+
+        if(!values.email){
+            errors.email = "Email is required"
+        } else if(!regex.test(values.email)) {
+            errors.email = "Email is invalid"
+        }
+
+        return errors;
+    }
+
+    useEffect (() => {
+        console.log(formErr)
+
+        if (Object.keys(formErr).length === 0 && isSubmit){
+            console.log(form)
+        }
+    }, [formErr]);
 
     return (
         <>
@@ -21,23 +74,43 @@ function Login() {
 
                 <h1>Sign in</h1>
 
-                <div className='inputs'>
+                <form onSubmit={handleSubmit}>
+                    <div className='inputs'>
 
                     <div className='infoBar'>
                         <label>Email</label>
-                        <p className='err'> Please enter a valid email</p>
+                        <p className='err'>{formErr.email}</p>
                     </div>
-                    <input type="text" placeholder='******@anymail.com' className='inputErr'/>
+                    <input 
+                        type="text" 
+                        placeholder='******@anymail.com' 
+                        className='inputErr'
+                        name = "email"
+                        value = {form.email}
+                        onChange={handleChange}
+                    />
 
                     <div className='infoBar'>
                         <label>Password</label>
-                        <p className='err'> Please enter a valid password</p>
+                        <p className='err'> {formErr.password}</p>
                     </div>
-                    <input type="text" placeholder='Enter your password' className='inputErr' />
-                
-                </div>
+                    <input 
+                        type="text" 
+                        placeholder='Enter your password' 
+                        className='inputErr' 
+                        name = "pass"
+                        value = {form.pass}
+                        onChange={handleChange}
+                    />
 
-                <button type='submit' onClick={handleClick}>Sign in</button>
+                    </div>
+
+                    <button type='submit'> Sign in </button>
+                    {/* <button type='submit' onClick={handleClick}>Sign in</button> */}
+
+                </form>
+
+                {/* Second Phase */}
 
                 <div className="divider">or</div> 
 
@@ -63,4 +136,4 @@ function Login() {
 }
 
 
-export default Login;
+// export default Login;

@@ -17,7 +17,10 @@ Install my-project with npm
 
 ## Authors
 - [@Ola](https://www.github.com/great-kiola)
-- [@???](https://www.github.com/????)
+- [@jaskiranKhatkar](https://github.com/JaskiranKhatkar)
+- [@ianouff](https://github.com/lanouff)
+- [@XxUmerKhanxX](https://github.com/XxUmerKhanxX)
+- [@ytalhakivrak](https://github.com/ytalhakivrak)
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)

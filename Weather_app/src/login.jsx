@@ -13,28 +13,19 @@ export default function Login() {
  
     const initialForm = {
         email: "",
-        pass: ""
+        password: "" 
     }
 
     // State management
     const [form, setForm] = useState(initialForm)
     const [formErr, setFormErr] = useState({})
     const [isSubmit, setIsSubmit] = useState(false);
-    const [isActive, setIsActive] = useState(false);
 
-
-    const toggleClass = () => {
-        setIsActive(!isActive);
-    }
     
     const handleChange = (e) => {
         const {name, value} = e.target;
 
         setForm({...form, [name]: value})
-        // setForm((preform) => ({
-        //     ...preform,
-        //     [name]: value,
-        // }))
     }
 
     const handleSubmit = (e) => {
@@ -42,32 +33,33 @@ export default function Login() {
         console.log(form)
         setFormErr(validate(form))
         setIsSubmit(true)
-        toggleClass()
     }
 
-    const validate = (values) => {
+    const validate = (value) => {
         const errors = {}
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
-        if(!values.password){
+        if(!value.password){
             errors.password = "Password is required"
         }
 
-        if(!values.email){
+        if(!value.email){
             errors.email = "Email is required"
-        } else if(!regex.test(values.email)) {
+        } else if(!regex.test(value.email)) {
             errors.email = "Email is invalid"
         }
         return errors;
     }
 
     useEffect (() => {
-        console.log(formErr)
+        if (Object.keys(formErr).length > 0) {
+            console.log(formErr)
+        }
 
         if (Object.keys(formErr).length === 0 && isSubmit){
             console.log(form)
         }
-    }, [formErr]);
+    }, [formErr, form, isSubmit]);
 
     return (
         <>
@@ -84,12 +76,13 @@ export default function Login() {
 
                     <div className='infoBar'>
                         <label>Email</label>
-                        <p className='err'>{formErr.email}</p>
+                        <p className={formErr.email ? 'err' : ''}>{formErr.email}</p>
+                        {/* <p className='err'>{formErr.email}</p> */}
                     </div>
                     <input 
                         type="text" 
                         placeholder='******@anymail.com' 
-                        className= {isActive ? 'inputErr' : ""}
+                        className={formErr.email ? 'inputErr' : ''}
                         name = "email"
                         value = {form.email}
                         onChange={handleChange}
@@ -97,21 +90,20 @@ export default function Login() {
 
                     <div className='infoBar'>
                         <label>Password</label>
-                        <p className='err'> {formErr.password}</p>
+                        <p className = {formErr.password ? "err" : ''}> {formErr.password}</p>
                     </div>
                     <input 
                         type="text" 
                         placeholder='Enter your password' 
-                        className='inputErr' 
-                        name = "pass"
-                        value = {form.pass}
+                        className={formErr.password ? 'inputErr' : ''} 
+                        name = "password"
+                        value = {form.password} 
                         onChange={handleChange}
                     />
 
                     </div>
 
                     <button type='submit'> Sign in </button>
-                    {/* <button type='submit' onClick={handleClick}>Sign in</button> */}
 
                 </form>
 

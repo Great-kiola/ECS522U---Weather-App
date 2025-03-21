@@ -20,20 +20,25 @@ export default function Login() {
     const [form, setForm] = useState(initialForm)
     const [formErr, setFormErr] = useState({})
     const [isSubmit, setIsSubmit] = useState(false);
-
     
     const handleChange = (e) => {
         const {name, value} = e.target;
-
         setForm({...form, [name]: value})
     }
 
+
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(form)
+
         setFormErr(validate(form))
         setIsSubmit(true)
     }
+
+    // const showSuccess = (e) => {
+    //     e.preventDefault()
+
+    // } 
 
     const validate = (value) => {
         const errors = {}
@@ -63,6 +68,10 @@ export default function Login() {
 
     return (
         <>
+            <div className = 'toast'>
+                <h3>Sign in successfull</h3>
+            </div>
+
             <div className='card'>
                 <div className='weatherLogo'>
                     <img src={logo} alt="logo"/>

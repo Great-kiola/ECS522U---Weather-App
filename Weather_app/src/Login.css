@@ -52,11 +52,13 @@ h3 {
 .err {
     position: relative;
     color: var(--errRed);
+    /* visibility: hidden; */
+
 }
 
 .err::before {
     /* add the new bullet point */
-    position: absolute;
+    /* position: absolute; */
     display: inline-block;
     content: '';
     -webkit-border-radius: 0.375rem;

@@ -20,7 +20,12 @@ export default function Login() {
     const [form, setForm] = useState(initialForm)
     const [formErr, setFormErr] = useState({})
     const [isSubmit, setIsSubmit] = useState(false);
+    const [isActive, setIsActive] = useState(false);
 
+
+    const toggleClass = () => {
+        setIsActive(!isActive);
+    }
     
     const handleChange = (e) => {
         const {name, value} = e.target;
@@ -37,6 +42,7 @@ export default function Login() {
         console.log(form)
         setFormErr(validate(form))
         setIsSubmit(true)
+        toggleClass()
     }
 
     const validate = (values) => {
@@ -52,7 +58,6 @@ export default function Login() {
         } else if(!regex.test(values.email)) {
             errors.email = "Email is invalid"
         }
-
         return errors;
     }
 
@@ -84,7 +89,7 @@ export default function Login() {
                     <input 
                         type="text" 
                         placeholder='******@anymail.com' 
-                        className='inputErr'
+                        className= {isActive ? 'inputErr' : ""}
                         name = "email"
                         value = {form.email}
                         onChange={handleChange}

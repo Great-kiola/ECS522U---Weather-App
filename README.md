@@ -5,8 +5,14 @@ This is a Weather app project for graphical and user interface module code: ECS5
 Install my-project with npm
 
 ```bash
-  npm install my-project
-  cd Weather-app
+  npm create vite@latest
+  -- Choose options --
+```
+## To run
+```bash
+cd ECS522U--Weather-App
+cd Weather-app
+npm run dev
 ```
 
 ## Features

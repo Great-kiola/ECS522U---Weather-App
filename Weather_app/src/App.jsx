@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import './App.css'
 import Axios from 'axios'; 
-import Login from './login';
 
 
 // ! Dont delete
@@ -11,10 +10,8 @@ import Login from './login';
 //     console.log(data);
 //   })
 
-
-
 function App() {
-  // let ApiKey = "278b506dd020c8ea4a386833fc15488d"  //! Ola Api
+  let ApiKey = "278b506dd020c8ea4a386833fc15488d"  //! Ola Api
   let city = "London"
 
   // let ApiKey = "278b506dd020c8ea4a386833fc15488d"   //* Uncomment & Add your api key here

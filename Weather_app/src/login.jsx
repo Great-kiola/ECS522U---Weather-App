@@ -8,6 +8,8 @@ import google_icon from "./assets/google.svg"
 import facebook_icon from "./assets/facebook.svg"
 import logo from "/rainy-day.png"
 
+import { Link } from 'react-router-dom'
+
 
 
 export default function Login() {
@@ -22,6 +24,7 @@ export default function Login() {
     const [formErr, setFormErr] = useState({})
     const [isSubmit, setIsSubmit] = useState(false);
     const [sucess, setSuccess] = useState(false)
+    const [signInFail, setsignInFail] = useState(false)
 
     
     const handleChange = (e) => {
@@ -46,7 +49,6 @@ export default function Login() {
 
         if(!value.password){
             errors.password = "Password is required"
-            setSuccess(false)
         }
         
         if(!value.email){
@@ -55,7 +57,7 @@ export default function Login() {
             errors.email = "Email is invalid"
         }
 
-        // setSuccess(true)
+        setsignInFail(true)
         return errors;
     }
 
@@ -66,14 +68,22 @@ export default function Login() {
 
         if (Object.keys(formErr).length === 0 && isSubmit){
             console.log(form)
+
+            setsignInFail(false)
             setSuccess(true)
         }
     }, [formErr, form, isSubmit]);
 
     return (
         <>
+
+            {/* Toast Notifications */}
             {sucess && <div className = 'toast'>
                 <h3>Sign in successfull</h3>
+            </div>}
+
+            {signInFail && <div className = 'toastFail'>
+                <h3>Sign in failed</h3>
             </div>}
 
             <div className='card'>
@@ -93,7 +103,7 @@ export default function Login() {
                         {/* <p className='err'>{formErr.email}</p> */}
                     </div>
                     <input 
-                        type="text" 
+                        type="email" 
                         placeholder='******@anymail.com' 
                         className={formErr.email ? 'inputErr' : ''}
                         name = "email"
@@ -106,7 +116,7 @@ export default function Login() {
                         <p className = {formErr.password ? "err" : ''}> {formErr.password}</p>
                     </div>
                     <input 
-                        type="text" 
+                        type="password" 
                         placeholder='Enter your password' 
                         className={formErr.password ? 'inputErr' : ''} 
                         name = "password"
@@ -137,7 +147,9 @@ export default function Login() {
                     
                 </div>
 
-                <h3>Don't have an account? <span><a href="#">Sign Up</a></span></h3>
+                <h3>Don't have an account? <span>
+                    <Link to="/signup">Sign Up</Link></span>
+                </h3>
 
             </div>
         

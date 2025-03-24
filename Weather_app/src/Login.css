@@ -28,16 +28,39 @@ h3 {
 
 
 /* Toast implementation for successful sign in*/
-.toast{
-    position:absolute;
+.toast {
+    min-width: 350px;
+    margin-left: -125px;
+    background-color: var(--validGreen);
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+.toast h3 {
+    font-size: 1.2rem;
+    color: white;
+}
+
+.toastFail {
+    position: absolute;
     width: 500px;
     top: 20px;
-    background-color: green;
+    background-color: var(--errRed);
     border-radius: 30px;
     place-items: center;
 }
 
-.toast h3{
+.toastFail h3 {
     font-size: 1.2rem;
     color: white;
 }
@@ -110,7 +133,7 @@ input::placeholder {
     color: #e3e5ec;
 }
 
-.inputErr{
+.inputErr {
     border: 2px solid var(--errRed);
 }
 
@@ -189,3 +212,23 @@ button img {
     --validGreen: #53DD6C;
     /* --errRed: #F95738; */
 }
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }

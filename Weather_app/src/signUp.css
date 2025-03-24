@@ -1,0 +1,25 @@
+body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--background-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title{
+    display: flex;
+    place-content: center;
+}
+
+span{
+    margin-left:7px;
+}
+
+h1{
+    font-size: 1.5rem;
+    margin-top: 30px;
+}
+
+input{
+    margin-bottom: 10px;
+}

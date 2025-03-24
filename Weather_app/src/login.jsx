@@ -79,7 +79,7 @@ export default function Login() {
                     <h2>Weatherly</h2>
                 </div>
 
-                <h1>Sign in</h1>
+                <h1 className='title'>Welcome Back!</h1>
 
                 <form onSubmit={handleSubmit}>
                     <div className='inputs'>

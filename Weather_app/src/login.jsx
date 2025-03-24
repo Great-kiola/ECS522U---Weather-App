@@ -23,8 +23,7 @@ export default function Login() {
     const [form, setForm] = useState(initialForm)
     const [formErr, setFormErr] = useState({})
     const [isSubmit, setIsSubmit] = useState(false);
-    const [sucess, setSuccess] = useState(false)
-    const [signInFail, setsignInFail] = useState(false)
+
 
     
     const handleChange = (e) => {
@@ -56,8 +55,6 @@ export default function Login() {
         } else if(!regex.test(value.email)) {
             errors.email = "Email is invalid"
         }
-
-        setsignInFail(true)
         return errors;
     }
 
@@ -68,25 +65,13 @@ export default function Login() {
 
         if (Object.keys(formErr).length === 0 && isSubmit){
             console.log(form)
-
-            setsignInFail(false)
-            setSuccess(true)
-
+            
             window.location.href = "/";
         }
     }, [formErr, form, isSubmit]);
 
     return (
         <>
-
-            {/* Toast Notifications */}
-            {sucess && <div className = 'toast'>
-                <h3>Sign in successfull</h3>
-            </div>}
-
-            {signInFail && <div className = 'toastFail'>
-                <h3>Sign in failed</h3>
-            </div>}
 
             <div className='card'>
                 <div className='weatherLogo'>
@@ -102,8 +87,8 @@ export default function Login() {
                     <div className='infoBar'>
                         <label>Email</label>
                         <p className={formErr.email ? 'err' : ''}>{formErr.email}</p>
-                        {/* <p className='err'>{formErr.email}</p> */}
                     </div>
+
                     <input 
                         type="email" 
                         placeholder='******@anymail.com' 
@@ -132,8 +117,7 @@ export default function Login() {
 
                 </form>
 
-                {/* Second Phase */}
-
+                {/* Other login options */}
                 <div className="divider">or</div> 
 
                 <div className='altOptions'>
@@ -160,6 +144,3 @@ export default function Login() {
         </>
     )
 }
-
-
-// export default Login;

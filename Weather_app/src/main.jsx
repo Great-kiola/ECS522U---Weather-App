@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
 import Login from './login.jsx'
-import SignUp from '../src/pages/signUp.jsx'
+import SignUp from './pages/signUp.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

@@ -27,10 +27,7 @@ function App() {
   }
 
   return (
-    <>
-
-    <Login/>
-    
+    <>    
       <button onClick={fetchData} > Get Location</button>
         <div className='details'>
           <h2>Getting the weather for {city}</h2>

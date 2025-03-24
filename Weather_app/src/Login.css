@@ -31,11 +31,10 @@ h3 {
 .toast{
     position:absolute;
     width: 500px;
-    top: -150px;
+    top: 20px;
     background-color: green;
     border-radius: 30px;
     place-items: center;
-    visibility: hidden;
 }
 
 .toast h3{

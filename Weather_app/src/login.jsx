@@ -21,6 +21,7 @@ export default function Login() {
     const [form, setForm] = useState(initialForm)
     const [formErr, setFormErr] = useState({})
     const [isSubmit, setIsSubmit] = useState(false);
+    const [sucess, setSuccess] = useState(false)
 
     
     const handleChange = (e) => {
@@ -37,10 +38,7 @@ export default function Login() {
         setIsSubmit(true)
     }
 
-    // const showSuccess = (e) => {
-    //     e.preventDefault()
-
-    // } 
+    
 
     const validate = (value) => {
         const errors = {}
@@ -48,13 +46,16 @@ export default function Login() {
 
         if(!value.password){
             errors.password = "Password is required"
+            setSuccess(false)
         }
-
+        
         if(!value.email){
             errors.email = "Email is required"
         } else if(!regex.test(value.email)) {
             errors.email = "Email is invalid"
         }
+
+        // setSuccess(true)
         return errors;
     }
 
@@ -65,14 +66,15 @@ export default function Login() {
 
         if (Object.keys(formErr).length === 0 && isSubmit){
             console.log(form)
+            setSuccess(true)
         }
     }, [formErr, form, isSubmit]);
 
     return (
         <>
-            <div className = 'toast'>
+            {sucess && <div className = 'toast'>
                 <h3>Sign in successfull</h3>
-            </div>
+            </div>}
 
             <div className='card'>
                 <div className='weatherLogo'>

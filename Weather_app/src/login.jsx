@@ -71,6 +71,8 @@ export default function Login() {
 
             setsignInFail(false)
             setSuccess(true)
+
+            window.location.href = "/";
         }
     }, [formErr, form, isSubmit]);
 
@@ -147,8 +149,10 @@ export default function Login() {
                     
                 </div>
 
-                <h3>Don't have an account? <span>
-                    <Link to="/signup">Sign Up</Link></span>
+                <h3>Don't have an account? 
+                    <span>
+                        <Link to="/signup">Sign Up</Link>
+                    </span>
                 </h3>
 
             </div>

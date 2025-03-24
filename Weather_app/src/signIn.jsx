@@ -5,7 +5,7 @@ import React from "react";
 function signIn(){
     return(
         <>
-            <h1>This is the sign in page</h1>
+            <h1>This is the sign up page</h1>
         </>
     )
 }

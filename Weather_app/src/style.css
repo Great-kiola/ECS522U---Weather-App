@@ -246,13 +246,16 @@ body {
 /* Metrics Container Styles */
 .metricsContainer {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   gap: 20px;
 }
 
-.metricRow {
-  display: flex;
-  gap: 8px;
+.metricRow{
+  width: 250px;
+  gap: 10px;
 }
 
 .metricHeader {
@@ -262,12 +265,6 @@ body {
   color: #23619a;
   font-size: 20px;
   font-weight: 500;
-  font-family:
-    Poppins,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
 }
 
 .metricIcon {

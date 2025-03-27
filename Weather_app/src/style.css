@@ -1,37 +1,25 @@
 /* Global Styles */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
+
+#root{
+  width: 100vw;
+}
+
 
 body {
-    font-family: "Inter", sans-serif;
-    background-color: var(--background-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.container {
-  border-radius: 0;
-  background-color: #fff;
-  overflow: hidden;
-}
-
-.content {
-  /* background-color: #d9d9d9; */
-  width: 100%;
-  padding: 0 70px 45px 26px;
-}
-
-.mainSection {
-  width: 100%;
-  max-width: 1288px;
-  margin: 0 auto;
-}
+  font-family: "Inter", sans-serif;
+  background-color: var(--background-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
 
 .header {
   background-color: #edf3f8;
@@ -41,12 +29,6 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  font-family:
-    Inter,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
   font-weight: 700;
 }
 
@@ -71,18 +53,19 @@ body {
 }
 
 .weatherContent {
-  margin-top: 52px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 20px;
 }
 
-.leftColumn {
+/* .leftColumn {
   width: 61%;
-}
+} */
 
-.rightColumn {
+/* .rightColumn {
   width: 39%;
-}
+} */
 
 .currentWeather {
   background-color: #f5f5f5;
@@ -90,36 +73,18 @@ body {
 }
 
 .searchBar {
-  background-color: #edf3f8;
+
   border-radius: 40px;
+  margin: 40px auto 10px;
   padding: 3px 18px 24px;
   display: flex;
   align-items: center;
   gap: 14px;
-  color: #23619a;
-  font-family:
-    Poppins,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
   font-size: 15px;
 }
 
-.searchIcon {
-  width: 19px;
-  aspect-ratio: 0.79;
-}
-
 .searchInput {
-  flex: 1;
-  border: none;
-  background: transparent;
-  color: inherit;
-  font-family: inherit;
-  font-size: inherit;
-  outline: none;
-  margin-top: 10px;
+  margin-top: 20px;
 }
 
 .weatherCard {
@@ -605,7 +570,7 @@ body {
 }
 
 /* Media Queries */
-@media (width <= 991px) {
+@media (width <=991px) {
   .content {
     max-width: 100%;
     margin-right: 10px;

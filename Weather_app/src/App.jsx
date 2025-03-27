@@ -47,21 +47,8 @@
 // export default App
 
 
-
-
-
-"use client";
 import React from "react";
 import "./style.css";
-
-
-export default function App(){
-  return (
-    <>
-      
-    </>
-  )
-}
 
 
 
@@ -313,7 +300,7 @@ const WeatherWarning = () => (
 
 // Location Weather Component
 const LocationWeather = () => {
-  const renderLocationMetrics = (location) => (
+  const renderLocationMetrics = () => (
     <div className="locationMetrics">
       <section className="locationVisibility">
         <div className="metricHeader">

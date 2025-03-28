@@ -42,15 +42,20 @@
 }
 
 .curr-location img{
-  width: 30px;
+  width: 25px;
+  height: 25px;
   filter: brightness(0) invert(1);
 }
 
-
 .location--div{
+  display: flex;
+  flex-direction: column;
   width: 500px;
   background-color: blueviolet;
   color: #fff;
+
+  padding: 50px;
+  gap: 20px;
 }
 
 .parameters--div{

@@ -47,9 +47,52 @@
 
 import React from "react";
 import "./style.css";
+import {useState} from 'react'
+import { useEffect } from "react";
 
 // Main WeatherRoute Component
 const WeatherRoute = () => {
+  const [data, setData] = useState({})
+  const  [location, setLocation] = useState('')
+  const API_key = "d4c1f3085a13b8325c6db3814dc45b81";
+
+  useEffect(() => {
+    const fetchDefaultWeather = async () => {
+      const defaultLocation = "London";
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&units=metric&appid=${API_key}`;
+      const response = await fetch(url);
+      const defaultData = await response.json();
+      setData(defaultData);
+    };
+    fetchDefaultWeather();
+  }, []);
+
+  const handleInputChange = (e) => {
+    setLocation(e.target.value);
+
+  }
+  const search = async () => {
+    if (location.trim()!== '') {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_key}`;
+      const response = await fetch(url);
+      const searchData = await response.json();
+      console.log(searchData)
+      setData(searchData);
+      setLocation('')
+    }
+  }
+    const handleKeyDown = (e) => {
+      if (e.key === 'Enter') {
+        search();
+      }
+    }
+    const currentDate = new Date();
+    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    const dayOfWeek = daysOfWeek[currentDate.getDay()];
+    const month = months[currentDate.getMonth()];
+    const dayOfMonth = currentDate.getDate();
+    const formattedDate = `${dayOfWeek}, ${dayOfMonth} ${month}`;
   // Header Component
   const Header = () => (
     <header className="header">
@@ -71,16 +114,21 @@ const WeatherRoute = () => {
   const CurrentWeather = () => (
     <div className="currentWeather">
       <div className="searchBar">
-        <img
-          src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4ec8eb5f912c3be897baec8ed140a2642e8f0c3?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-          alt="Search"
-          className="searchIcon"
-        />
-        <input
+      <input
           type="text"
           placeholder="Search for a different location"
           className="searchInput"
+          value = {location}
+          onChange={handleInputChange}
+          onKeyDown={handleKeyDown}
         />
+          <img
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4ec8eb5f912c3be897baec8ed140a2642e8f0c3?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+            alt="Search"
+            className="searchIcon"
+            onClick={search}
+          />
+        
       </div>
       <div className="weatherCard">
         <div className="locationInfo">
@@ -90,23 +138,23 @@ const WeatherRoute = () => {
               alt="Location"
               className="locationIcon"
             />
-            <h2 className="locationName">QMUL, United Kingdom</h2>
+            <h2 className="locationName">{data.name}</h2>
           </div>
-          <time className="timestamp">Today 00.32</time>
+          <time className="timestamp">{formattedDate}</time>
         </div>
         <div className="temperature">
           <div className="tempValue">
-            <span className="tempNumber">14</span>
+            <span className="tempNumber">{data.main ? `${Math.floor(data.main.temp)}` : null}</span>
             <div className="tempUnit">
               <span className="degree">O</span>
               <span className="celsius">C</span>
             </div>
           </div>
-          <p className="weatherCondition">Mostly Cloudy</p>
+          <p className="weatherCondition">{data.weather ? data.weather[0].main : null}</p>
           <div className="weatherMetrics">
-            <span>230hpa</span>
-            <span>30%</span>
-            <span>12 km/hr</span>
+            <span>{data.main ? data.main.pressure : null}hPa</span>
+            <span>{data.main ? data.main.humidity : null}%</span>
+            <span>{data.wind ? data.wind.speed : null} km/hr</span>
           </div>
         </div>
       </div>

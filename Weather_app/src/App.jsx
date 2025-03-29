@@ -227,11 +227,13 @@ const WeatherRoute = () => {
           // onChange={handleInputChange}
           // onKeyDown={handleKeyDown}
         />
+        <button onClick={search} className="search--Btn">
           <img
             src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4ec8eb5f912c3be897baec8ed140a2642e8f0c3?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
             alt="Search"
-            className="searchIcon"
-            onClick={search} />
+          />
+        </button>
+
       </div>
       
       

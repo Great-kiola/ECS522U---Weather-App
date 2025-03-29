@@ -273,7 +273,7 @@ const WeatherRoute = () => {
       </div>
 
       {/* Forecast */}
-      {/* <div className="forecast">
+      <div className="forecast">
       <h2 className="forecastTitle">Weather for the next 5 days</h2>
       <div className="forecastGrid">
         {[
@@ -312,7 +312,7 @@ const WeatherRoute = () => {
           </div>
         ))}
       </div>
-    </div> */}
+    </div>
     </div>
   );
 

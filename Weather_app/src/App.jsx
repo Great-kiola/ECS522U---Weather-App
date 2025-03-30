@@ -3,8 +3,7 @@ import "../src/styling/style.css";
 import guage from "./assets/gauge-medium-svgrepo-com.svg"
 import speed from "./assets/speed-meter-svgrepo-com.svg"
 import humidity from "./assets/humidity-svgrepo-com.svg"
-
-
+import pin from "./assets/location-pin-svgrepo-com.svg"
 
 
 import {useState} from 'react'
@@ -70,39 +69,39 @@ const WeatherRoute = () => {
     </header>
   );
 
+  
+
   // Current Weather Component
   const CurrentWeather = () => (
-    <div className="currentWeather">
-      <div className="searchBar">
-      <input
-          type="text"
-          placeholder="Search for a different location"
-          className="searchInput"
-          // value = {location}
-          // onChange={handleInputChange}
-          // onKeyDown={handleKeyDown}
-        />
-        <button onClick={search} className="search--Btn">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4ec8eb5f912c3be897baec8ed140a2642e8f0c3?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-            alt="Search"
-          />
-        </button>
-
-      </div>
-      
-      
+    <div className="currentWeather">      
       
       <div className="weatherCard">
+        <div className="searchBar">
+          <input
+              type="text"
+              placeholder="Search for a different location"
+              className="searchInput"
+              // value = {location}
+              // onChange={handleInputChange}
+              // onKeyDown={handleKeyDown}
+            />
+            <button onClick={search} className="search--Btn">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4ec8eb5f912c3be897baec8ed140a2642e8f0c3?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+                alt="Search"
+              />
+            </button>
+        </div>
+
+        
+
         <div className="locationInfo">
           <div className="locationHeader">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/ca67b2fa098019c13aa7411e6706b9b6410dcacd?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-              alt="Location"
-              className="locationIcon"
-            />
+            <img src={pin} alt="Location" className="locationIcon" />
             <h2 className="locationName">{data.name}</h2>
           </div>
+
+          
           <time className="timestamp">{formattedDate}</time>
         </div>
         <div className="temperature">

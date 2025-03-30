@@ -8,34 +8,27 @@ import Axios from "axios";
 
 
 import { useState } from 'react'
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 // Main WeatherRoute Component
 const WeatherRoute = () => {
 
-  const [data, setData] = useState({})
-  // const [location, setLocation] = useState('')
-  const city = "Brazil"
+  const [location, setLocation] = useState('')
+  // const city = "Brazil"
   const [weatherDetails, setweatherDetails] = useState(null)
-  
   const API_key = "d4c1f3085a13b8325c6db3814dc45b81";
 
-  useEffect(() => {
-    const fetchDefaultWeather = async () => {
-      const defaultLocation = "London";
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&units=metric&appid=${API_key}`;
-      const response = await fetch(url);
-      const defaultData = await response.json();
-      setData(defaultData);
-    };
-    fetchDefaultWeather();
-  }, []);
 
+  const change = (e) => {
+    setLocation(e.target.value)
+  }
 
   const search = () => {
-    Axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`).then((res) => {
+
+    Axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_key}`).then((res) => {
       setweatherDetails(res.data);
       console.log(res.data)
+      console.log(location)
     })
     console.log("Hello")
   }
@@ -66,7 +59,6 @@ const WeatherRoute = () => {
     </header>
   );
 
-
   // Current Weather Component
   const CurrentWeather = () => (
     <div className="currentWeather">
@@ -77,6 +69,8 @@ const WeatherRoute = () => {
             type="text"
             placeholder="Search for a different location"
             className="searchInput"
+            onChange={change}
+            value={location}
           />
           <button onClick={search} className="search--Btn">
             <img
@@ -100,7 +94,7 @@ const WeatherRoute = () => {
         <div className="temperature">
           <div className="tempValue">
             <div className="val-num">
-              <span className="tempNumber">{data.main ? `${Math.floor(data.main.temp)}` : null}</span>
+              <span className="tempNumber">{weatherDetails?.main ? `${Math.floor(weatherDetails?.main.temp - 273.15)}` : null}</span>
               <div className="tempUnit">
                 <span className="degree">O</span>
                 <span className="celsius">C</span>
@@ -108,7 +102,7 @@ const WeatherRoute = () => {
             </div>
 
             <div className="weather-condtn">
-              <p className="weatherCondition">{data.weather ? data.weather[0].main : null}</p>
+              <p className="weatherCondition">{weatherDetails?.weather ? weatherDetails?.weather[0].main : null}</p>
 
             </div>
 

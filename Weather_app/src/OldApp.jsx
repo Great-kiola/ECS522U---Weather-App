@@ -764,3 +764,14 @@ function App() {
 }
 
 export default App
+
+  // useEffect(() => {
+  //   const fetchDefaultWeather = async () => {
+  //     const defaultLocation = "London";
+  //     const url = `https://api.openweathermap.org/data/2.5/weather?q=${defaultLocation}&units=metric&appid=${API_key}`;
+  //     const response = await fetch(url);
+  //     const defaultData = await response.json();
+  //     setData(defaultData);
+  //   };
+  //   fetchDefaultWeather();
+  // }, []);

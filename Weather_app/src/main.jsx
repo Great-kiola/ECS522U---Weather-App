@@ -16,5 +16,5 @@ createRoot(document.getElementById('root')).render(
         <Route path="/signup" element={<SignUp />} />
       </Routes>
     </Router>
-  </StrictMode>,
+  </StrictMode>
 )

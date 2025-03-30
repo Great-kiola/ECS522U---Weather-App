@@ -24,14 +24,10 @@ export default function Login() {
     const [formErr, setFormErr] = useState({})
     const [isSubmit, setIsSubmit] = useState(false);
 
-
-    
     const handleChange = (e) => {
         const {name, value} = e.target;
         setForm({...form, [name]: value})
     }
-
-
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -39,8 +35,6 @@ export default function Login() {
         setFormErr(validate(form))
         setIsSubmit(true)
     }
-
-    
 
     const validate = (value) => {
         const errors = {}

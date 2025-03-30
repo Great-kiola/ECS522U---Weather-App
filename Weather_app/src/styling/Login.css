@@ -1,24 +1,6 @@
 /* This is the css for the login page */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-/* body {
-    font-family: "Inter", sans-serif;
-    background-color: var(--background-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-} */
-
-h1{
-    font-size: 6rem;
-    font-weight: bold;
-}
-
-h3 {
-    font-weight: 400;
-    font-size: 1rem;
-    text-align: center;
-}
 
 .weatherLogo {
     display: flex;
@@ -35,11 +17,19 @@ h3 {
     font-size: 19px;
 }
 
+.masterDiv{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
 .card {
     width: 450px;
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     padding: 35px;
+    margin: auto;
 }
 
 .infoBar {
@@ -76,50 +66,9 @@ h3 {
     margin: 20px auto 45px;
 }
 
-input {
-    padding: 1em 1em;
-    box-sizing: border-box;
-    width: 100%;
-    border-radius: 15px;
-    border: 2px solid #ccc;
-    background-color: #fcfcfc;
-    font-size: 1.1rem;
-}
-
-input::placeholder {
-    font-size: 1.2rem;
-    color: #e3e5ec;
-}
 
 .inputErr {
     border: 2px solid var(--errRed);
-}
-
-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    border: 1px solid transparent;
-    font-size: 1em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #1a1a1a;
-    cursor: pointer;
-    transition: background-color 0.25s;
-    color: #f9f9f9;
-    width: 100%;
-    margin: 10px auto;
-    padding: 1.2em;
-}
-
-button:hover {
-    background-color: var(--purp);
-}
-
-button:focus,
-button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
 }
 
 .divider {
@@ -160,6 +109,12 @@ button img {
     margin: 3px 8px;
 }
 
+.page-footer{
+    text-align: center;
+    font-weight: 400;
+    font-size: 1rem;
+}
+
 /* Global Variables */
 :root {
     --background-color: #f7faff;
@@ -170,23 +125,3 @@ button img {
     --validGreen: #53DD6C;
     /* --errRed: #F95738; */
 }
-
-@-webkit-keyframes fadein {
-    from {bottom: 0; opacity: 0;} 
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @keyframes fadein {
-    from {bottom: 0; opacity: 0;}
-    to {bottom: 30px; opacity: 1;}
-  }
-  
-  @-webkit-keyframes fadeout {
-    from {bottom: 30px; opacity: 1;} 
-    to {bottom: 0; opacity: 0;}
-  }
-  
-  @keyframes fadeout {
-    from {bottom: 30px; opacity: 1;}
-    to {bottom: 0; opacity: 0;}
-  }

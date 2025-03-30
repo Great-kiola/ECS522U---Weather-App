@@ -77,6 +77,7 @@ export default function Login() {
     return (
         <>
 
+            <div className="masterDiv">
             <div className='card'>
                 <div className='weatherLogo'>
                     <img src={logo} alt="logo"/>
@@ -153,7 +154,7 @@ export default function Login() {
                 </h3>
 
             </div>
-        
+            </div>
         </>
     )
 }

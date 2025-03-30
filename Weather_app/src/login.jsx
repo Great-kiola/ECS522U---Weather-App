@@ -66,7 +66,7 @@ export default function Login() {
 
     return (
         <>
-
+            <div className="masterDiv">
             <div className='card'>
                 <div className='weatherLogo'>
                     <img src={logo} alt="logo"/>
@@ -127,14 +127,14 @@ export default function Login() {
                     
                 </div>
 
-                <h3>Don't have an account? 
+                <h3 className='page-footer'>Don't have an account? 
                     <span>
                         <Link to="/signup">Sign Up</Link>
                     </span>
                 </h3>
 
             </div>
-        
+            </div>
         </>
     )
 }

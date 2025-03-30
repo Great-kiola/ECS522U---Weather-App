@@ -367,6 +367,66 @@ const WeatherRoute = () => {
           <span className="unit">mph</span>
         </section>
       </div>
+
+      <div className="metricRow">
+        <section className="windSpeed">
+          <div className="metricHeader">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1143880fe42722dc31e18fd2cab9185f163a6244?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+              alt="Wind Speed"
+              className="metricIcon"
+            />
+            <h3>Wind Speed</h3>
+          </div>
+          <div className="windValue">20</div>
+          <span className="unit">mph</span>
+        </section>
+      </div>
+
+      <div className="metricRow">
+        <section className="windSpeed">
+          <div className="metricHeader">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1143880fe42722dc31e18fd2cab9185f163a6244?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+              alt="Wind Speed"
+              className="metricIcon"
+            />
+            <h3>Wind Speed</h3>
+          </div>
+          <div className="windValue">20</div>
+          <span className="unit">mph</span>
+        </section>
+      </div>
+
+      <div className="metricRow">
+        <section className="windSpeed">
+          <div className="metricHeader">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1143880fe42722dc31e18fd2cab9185f163a6244?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+              alt="Wind Speed"
+              className="metricIcon"
+            />
+            <h3>Wind Speed</h3>
+          </div>
+          <div className="windValue">20</div>
+          <span className="unit">mph</span>
+        </section>
+      </div>
+
+      <div className="metricRow">
+        <section className="windSpeed">
+          <div className="metricHeader">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1143880fe42722dc31e18fd2cab9185f163a6244?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+              alt="Wind Speed"
+              className="metricIcon"
+            />
+            <h3>Wind Speed</h3>
+          </div>
+          <div className="windValue">20</div>
+          <span className="unit">mph</span>
+        </section>
+      </div>
     </div>
   );
 

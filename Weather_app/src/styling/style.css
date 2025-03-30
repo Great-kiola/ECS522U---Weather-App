@@ -1,5 +1,5 @@
 /* Global Styles */
-/* @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
  
 .header {
   background-color: lightblue;
@@ -46,7 +46,7 @@
   display: flex;
   flex-direction: column;
 
-  background-color: lightblue;
+  /* background-color: lightblue; */
   width: 100%;
   padding: 30px;
 }
@@ -78,12 +78,6 @@
   margin-top: 0px;
   align-items: center;
   color: #23619a;
-  font-family:
-    Poppins,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
 }
 
 .locationHeader {
@@ -111,56 +105,60 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 32px;
-  margin-top: 25px;
+  justify-content: center;
+  padding: 35px;
+  border-radius: 25px;
+  margin: 25px 0;
+  background-color: #23619a;
 }
 
 .tempValue {
   display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.val-num{
+  display: flex;
   align-items: flex-start;
-  gap: 11px;
-  font-family:
-    Oxygen,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  justify-content: center;
 }
 
 .tempNumber {
-  color: darkblue;
   font-size: 110px;
-  font-weight: 200;
+  font-weight: 500;
+  color: #fff;
 }
 
 .tempUnit {
   display: flex;
-  align-items: flex-start;
+
   font-weight: 700;
+  margin: 0 -8px;
+}
+
+.tempUnit span{
+  color: #fff;
 }
 
 .degree {
-  color: darkblue;
   font-size: 20px;
 }
 
 .celsius {
-  color: darkblue;
   font-size: 40px;
 }
 
 .weatherCondition {
-  color: darkblue;
-  margin-top: 5px;
-  margin-right: 50px;
-  font-size: 24px;
+  font-size: 2.3rem;
   font-weight: 600;
+  color: #fff;
+  margin-top: -10px;
 }
 
 .weatherMetrics {
-  color: darkblue;
-  margin-top: 10px;
-  margin-right: 50px;
+  color: #fff;
   display: flex;
   gap: 56px;
   font-size: 18px;
@@ -173,12 +171,6 @@
   border-radius: 10px;
   padding: 10px 11px 10px;
   text-align: center;
-  font-family:
-    Poppins,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
   font-size: 16px;
   font-weight: 300;
 }
@@ -186,12 +178,7 @@
 .forecast {
   margin-top: 16px;
   padding: 0 21px;
-  font-family:
-    Poppins,
-    -apple-system,
-    Roboto,
-    Helvetica,
-    sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 600;
 }
 
@@ -529,6 +516,19 @@
   width: 50px;
   height: 20px;
 }
+
+.pressure{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pressure img{
+  width: 30px;
+  height: 30px;
+  filter: invert();
+}
+
 
 
 /* Media Queries */

@@ -152,6 +152,13 @@
 
 import React from "react";
 import "../src/styling/style.css";
+import guage from "./assets/gauge-medium-svgrepo-com.svg"
+import speed from "./assets/speed-meter-svgrepo-com.svg"
+import humidity from "./assets/humidity-svgrepo-com.svg"
+
+
+
+
 import {useState} from 'react'
 import { useEffect } from "react";
 
@@ -170,7 +177,7 @@ const WeatherRoute = () => {
       setData(defaultData);
     };
     fetchDefaultWeather();
-  }, []);
+  }, []);  
 
   // const handleInputChange = (e) => {
   //   setLocation(e.target.value);
@@ -252,17 +259,39 @@ const WeatherRoute = () => {
         </div>
         <div className="temperature">
           <div className="tempValue">
-            <span className="tempNumber">{data.main ? `${Math.floor(data.main.temp)}` : null}</span>
-            <div className="tempUnit">
-              <span className="degree">O</span>
-              <span className="celsius">C</span>
+            <div className="val-num">
+              <span className="tempNumber">{data.main ? `${Math.floor(data.main.temp)}` : null}</span>
+              <div className="tempUnit">
+                <span className="degree">O</span>
+                <span className="celsius">C</span>
+              </div>
             </div>
+
+            <div className="weather-condtn">
+              <p className="weatherCondition">{data.weather ? data.weather[0].main : null}</p>
+
+            </div>
+
           </div>
-          <p className="weatherCondition">{data.weather ? data.weather[0].main : null}</p>
           <div className="weatherMetrics">
-            <span>{data.main ? data.main.pressure : null}hPa</span>
-            <span>{data.main ? data.main.humidity : null}%</span>
-            <span>{data.wind ? data.wind.speed : null} km/hr</span>
+
+            <div className="pressure">
+              <img src={guage} alt="pressure" />
+              <span>{data.main ? data.main.pressure : null}hPa</span>
+            </div>
+
+            <div className="pressure">
+              <img src={humidity} alt="humidity" />
+              <span>{data.main ? data.main.humidity : null}%</span>
+            </div>
+
+            <div className="pressure">
+              <img src={speed} alt="speed" />
+              <span>{data.wind ? data.wind.speed : null} km/hr</span>
+            </div>
+
+
+            
           </div>
         </div>
       </div>

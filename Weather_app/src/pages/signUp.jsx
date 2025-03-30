@@ -3,7 +3,7 @@ import React , {useState, useEffect}  from 'react'
 
 
 // Other imports
-import '../signUp.css'
+import '../styling/signUp.css'
 import google_icon from "../assets/google.svg"
 import logo from "/rainy-day.png"
 

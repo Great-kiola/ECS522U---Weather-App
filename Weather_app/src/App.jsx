@@ -151,7 +151,7 @@
 // export default App
 
 import React from "react";
-import "./style.css";
+import "../src/styling/style.css";
 import {useState} from 'react'
 import { useEffect } from "react";
 

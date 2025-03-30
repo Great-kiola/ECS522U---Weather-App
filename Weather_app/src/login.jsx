@@ -3,7 +3,7 @@ import React , {useState, useEffect}  from 'react'
 
 
 // Other imports
-import './Login.css'
+import '../src/styling/login.css'
 import google_icon from "./assets/google.svg"
 import facebook_icon from "./assets/facebook.svg"
 import logo from "/rainy-day.png"

@@ -4,15 +4,20 @@ import guage from "./assets/gauge-medium-svgrepo-com.svg"
 import speed from "./assets/speed-meter-svgrepo-com.svg"
 import humidity from "./assets/humidity-svgrepo-com.svg"
 import pin from "./assets/location-pin-svgrepo-com.svg"
+import Axios from "axios";
 
 
-import {useState} from 'react'
+import { useState } from 'react'
 import { useEffect } from "react";
 
 // Main WeatherRoute Component
 const WeatherRoute = () => {
+
   const [data, setData] = useState({})
-  const  [location, setLocation] = useState('')
+  // const [location, setLocation] = useState('')
+  const city = "Brazil"
+  const [weatherDetails, setweatherDetails] = useState(null)
+  
   const API_key = "d4c1f3085a13b8325c6db3814dc45b81";
 
   useEffect(() => {
@@ -26,32 +31,24 @@ const WeatherRoute = () => {
     fetchDefaultWeather();
   }, []);
 
-  // const handleInputChange = (e) => {
-  //   setLocation(e.target.value);
 
-  // }
-  const search = async () => {
-    if (location.trim()!== '') {
-      const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=metric&appid=${API_key}`;
-      const response = await fetch(url);
-      const searchData = await response.json();
-      console.log(searchData)
-      setData(searchData);
-      setLocation('')
-    }
+  const search = () => {
+    Axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_key}`).then((res) => {
+      setweatherDetails(res.data);
+      console.log(res.data)
+    })
+    console.log("Hello")
   }
-    // const handleKeyDown = (e) => {
-    //   if (e.key === 'Enter') {
-    //     search();
-    //   }
-    // }
-    const currentDate = new Date();
-    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-    const dayOfWeek = daysOfWeek[currentDate.getDay()];
-    const month = months[currentDate.getMonth()];
-    const dayOfMonth = currentDate.getDate();
-    const formattedDate = `${dayOfWeek}, ${dayOfMonth} ${month}`;
+
+  const currentDate = new Date();
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  const dayOfWeek = daysOfWeek[currentDate.getDay()];
+  const month = months[currentDate.getMonth()];
+  const dayOfMonth = currentDate.getDate();
+  const formattedDate = `${dayOfWeek}, ${dayOfMonth} ${month}`;
+
+
   // Header Component
   const Header = () => (
     <header className="header">
@@ -69,39 +66,35 @@ const WeatherRoute = () => {
     </header>
   );
 
-  
 
   // Current Weather Component
   const CurrentWeather = () => (
-    <div className="currentWeather">      
-      
+    <div className="currentWeather">
+
       <div className="weatherCard">
         <div className="searchBar">
           <input
-              type="text"
-              placeholder="Search for a different location"
-              className="searchInput"
-              // value = {location}
-              // onChange={handleInputChange}
-              // onKeyDown={handleKeyDown}
+            type="text"
+            placeholder="Search for a different location"
+            className="searchInput"
+          />
+          <button onClick={search} className="search--Btn">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4ec8eb5f912c3be897baec8ed140a2642e8f0c3?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+              alt="Search"
             />
-            <button onClick={search} className="search--Btn">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4ec8eb5f912c3be897baec8ed140a2642e8f0c3?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-                alt="Search"
-              />
-            </button>
+          </button>
         </div>
 
-        
+
 
         <div className="locationInfo">
           <div className="locationHeader">
             <img src={pin} alt="Location" className="locationIcon" />
-            <h2 className="locationName">{data.name}</h2>
+            <h2 className="locationName">{weatherDetails?.name}</h2>
           </div>
 
-          
+
           <time className="timestamp">{formattedDate}</time>
         </div>
         <div className="temperature">
@@ -124,72 +117,74 @@ const WeatherRoute = () => {
 
             <div className="pressure">
               <img src={guage} alt="pressure" />
-              <span>{data.main ? data.main.pressure : null}hPa</span>
+              <span>{weatherDetails?.main ? weatherDetails?.main.pressure : null}hPa</span>
             </div>
 
             <div className="pressure">
               <img src={humidity} alt="humidity" />
-              <span>{data.main ? data.main.humidity : null}%</span>
+              <span>{weatherDetails?.main ? weatherDetails?.main.humidity : null}%</span>
             </div>
 
             <div className="pressure">
               <img src={speed} alt="speed" />
-              <span>{data.wind ? data.wind.speed : null} km/hr</span>
+              <span>{weatherDetails?.wind ? weatherDetails?.wind.speed : null} km/hr</span>
             </div>
 
 
-            
+
           </div>
         </div>
       </div>
 
       {/* Forecast */}
       <div className="forecast">
-      <h2 className="forecastTitle">Weather for the next 5 days</h2>
-      <div className="forecastGrid">
-        {[
-          {
-            day: "Tue",
-            temp: "10",
-            icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
-          },
-          {
-            day: "Tue",
-            temp: "-10",
-            icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
-          },
-          {
-            day: "Tue",
-            temp: "23",
-            icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",},
-          {
-            day: "Tue",
-            temp: "35",
-            icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
-          },
-          { 
-            day: "Tue",
-            temp: "200",
-            icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed", },
-          {
-            day: "Tue",
-            temp: "32",
-            icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/3256debd33e29a0a2f4f7318ae564fc50154b490?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
-          },
-        ].map((day, index) => (
-          <div
-            key={index}
-            className={`forecastDay ${index === 0 ? "bordered" : ""}`}
-          >
-            <h3>{day.day}</h3>
-            {day.icon && (
-              <img src={day.icon} alt="Weather" className="forecastIcon" />
-            )}
-            <span className="forecastTemp">{day.temp}</span>
-          </div>
-        ))}
+        <h2 className="forecastTitle">Weather for the next 5 days</h2>
+        <div className="forecastGrid">
+          {[
+            {
+              day: "Tue",
+              temp: "10",
+              icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
+            },
+            {
+              day: "Tue",
+              temp: "-10",
+              icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
+            },
+            {
+              day: "Tue",
+              temp: "23",
+              icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
+            },
+            {
+              day: "Tue",
+              temp: "35",
+              icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
+            },
+            {
+              day: "Tue",
+              temp: "200",
+              icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
+            },
+            {
+              day: "Tue",
+              temp: "32",
+              icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/3256debd33e29a0a2f4f7318ae564fc50154b490?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
+            },
+          ].map((day, index) => (
+            <div
+              key={index}
+              className={`forecastDay ${index === 0 ? "bordered" : ""}`}
+            >
+              <h3>{day.day}</h3>
+              {day.icon && (
+                <img src={day.icon} alt="Weather" className="forecastIcon" />
+              )}
+              <span className="forecastTemp">{day.temp}</span>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
     </div>
   );
 

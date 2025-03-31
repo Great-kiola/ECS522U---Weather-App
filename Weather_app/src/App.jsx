@@ -10,7 +10,10 @@ import humidity from "./assets/humidity-svgrepo-com.svg"
 import pin from "./assets/location-pin-svgrepo-com.svg"
 
 
-// import { useEffect } from "react";
+// const timestamp = 1691622800; // start with a Unix timestamp
+// const date = new Date(timestamp);
+// console.log("Time:" , date.getHours(),":" , date.getMinutes(),":",date.getSeconds() ); // prints the hour (0-23)
+// {date.getHours() `:`, date.getMinutes() `:`, date.getSeconds() }
 
 // Main WeatherRoute Component
 const WeatherRoute = () => {
@@ -199,43 +202,49 @@ const WeatherRoute = () => {
       <div className="sunriseSunset">
         <div className="metricHeader">
           <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/abaaad633f86ffdea0db57b147d48081433a2690?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+            src="https://cdn.builder.io/api/v1/image/assets/TEMP/1143880fe42722dc31e18fd2cab9185f163a6244?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
             alt="Sunrise & Sunset"
             className="metricIcon"
           />
           <h3>Sunrise & Sunset</h3>
         </div>
 
-        <div className="sunriseTime">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9d43d7fc036cfde6ea1048c5d19714a999ab00?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-            alt="Sunrise"
-            className="timeIcon"
-          />
-          <time>6:35 AM</time>
+
+        <div className="riseSet">
+          <div className="sunriseTime">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9d43d7fc036cfde6ea1048c5d19714a999ab00?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+              alt="Sunrise"
+              className="timeIcon"
+            />
+
+            <p>6:35</p>
+          </div>
+
+          <div className="sunsetTime">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/43d13020e59bf08717459f4ac3e4241db76c0ed4?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+              alt="Sunset"
+              className="timeIcon"
+            />
+            <p>12:35 PM</p>
+          </div>
         </div>
 
-        <div className="sunsetTime">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/TEMP/43d13020e59bf08717459f4ac3e4241db76c0ed4?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-            alt="Sunset"
-            className="timeIcon"
-          />
-          <time>12:35 PM</time>
-        </div>
+
       </div>
 
       <div className="metricRow">
-        <section className="windSpeed">
+        <section className="Humidity">
           <div className="metricHeader">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/1143880fe42722dc31e18fd2cab9185f163a6244?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-              alt="Wind Speed"
+              alt="Humidity"
               className="metricIcon"
             />
-            <h3>Wind Speed</h3>
+            <h3>Humidity</h3>
           </div>
-          <div className="windValue">20</div>
+          <p className="windValue">{weatherDetails?.main.humidity}</p>
           <span className="unit">mph</span>
         </section>
       </div>
@@ -250,53 +259,56 @@ const WeatherRoute = () => {
             />
             <h3>Wind Speed</h3>
           </div>
-          <div className="windValue">20</div>
+          <p className="windValue">{weatherDetails?.wind.speed}</p>
           <span className="unit">mph</span>
         </section>
       </div>
 
       <div className="metricRow">
-        <section className="windSpeed">
+        <section className="FeelsLike">
+          <div className="metricHeader">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1143880fe42722dc31e18fd2cab9185f163a6244?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+              alt="Feels like"
+              className="metricIcon"
+            />
+            <h3>Feels like</h3>
+          </div>
+          <p className="windValue">{weatherDetails?.main.feels_like}</p>
+          <span className="unit">mph</span>
+        </section>
+      </div>
+
+      <div className="metricRow">
+        <section className="Visibility">
+          <div className="metricHeader">
+            <img
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1143880fe42722dc31e18fd2cab9185f163a6244?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+              alt="Visibility"
+              className="metricIcon"
+            />
+            <h3>Visibility</h3>
+          </div>
+          <p className="windValue">{weatherDetails?.visibility}</p>
+          <span className="unit">mph</span>
+        </section>
+      </div>
+
+      <div className="metricRow">
+        <section className="Pressure">
           <div className="metricHeader">
             <img
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/1143880fe42722dc31e18fd2cab9185f163a6244?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
               alt="Wind Speed"
               className="metricIcon"
             />
-            <h3>Wind Speed</h3>
+            <h3>Pressure</h3>
           </div>
-          <div className="windValue">20</div>
-          <span className="unit">mph</span>
-        </section>
-      </div>
 
-      <div className="metricRow">
-        <section className="windSpeed">
-          <div className="metricHeader">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1143880fe42722dc31e18fd2cab9185f163a6244?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-              alt="Wind Speed"
-              className="metricIcon"
-            />
-            <h3>Wind Speed</h3>
+          <div className="valUnit">
+            <p className="windValue">{weatherDetails?.main.pressure}</p>
+            <p className="unit">mph</p>
           </div>
-          <div className="windValue">20</div>
-          <span className="unit">mph</span>
-        </section>
-      </div>
-
-      <div className="metricRow">
-        <section className="windSpeed">
-          <div className="metricHeader">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1143880fe42722dc31e18fd2cab9185f163a6244?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-              alt="Wind Speed"
-              className="metricIcon"
-            />
-            <h3>Wind Speed</h3>
-          </div>
-          <div className="windValue">20</div>
-          <span className="unit">mph</span>
         </section>
       </div>
     </div>

@@ -176,6 +176,8 @@
 .forecastDay.bordered {
   background-color: #23619a;
   color: #fff;
+  width: 350px;
+  align-items: start;
 }
 
 .forecastIcon {
@@ -204,35 +206,59 @@
 .metricHeader {
   display: flex;
   align-items: center;
+  justify-content: ce;
   gap: 2px;
   color: #23619a;
   font-size: 20px;
   font-weight: 500;
 }
 
-.metricIcon {
-  width: 20px;
-  aspect-ratio: 1;
-  margin-top: 4px;
-}
-
 /* Sunrise Sunset Section */
 .sunriseSunset {
   background-color: #edf3f8;
   border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px;
 }
 
 .sunriseTime,
 .sunsetTime {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-top: 12px;
+  gap: 5px;
+}
+
+.sunriseTime img,
+.sunsetTime img{
+  width: 40px;
+  height: 40px;
 }
 
 .timeIcon {
   width: 42px;
   aspect-ratio: 1;
+}
+
+.riseSet p {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+p.windValue{
+  font-size: 3rem;
+}
+
+.valUnit{
+  display: flex;
+  
+}
+
+.metricRow{
+  background-color: #edf3f8;
+  border-radius: 30px;
+  padding: 5px;
 }
 
 /* Humidity Section */

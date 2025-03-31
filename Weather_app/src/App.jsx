@@ -147,20 +147,61 @@ const WeatherRoute = () => {
           <div className="forecastDay">
             <img src={guage} alt="guage icon" />
 
-            <div className="today">
-              <h1 className="todayDate">Mon, 25, Oct,  {weatherDetails?.weather[0].main} </h1>
-              <h3 className="details"> Feels like: <span> 16 </span></h3>
+              <div className="today">
+                <h1 className="todayDate">Mon, 25, Oct,  {weatherDetails?.weather[0].main} </h1>
+                <h3 className="details"> Feels like: <span> 16 </span></h3>
 
-              <div className="daySection">
-                <h3 className="details">Dew point: {weatherDetails?.wind ? weatherDetails?.wind.speed : null}</h3>
-                <h3 className="details">Visibility: {weatherDetails?.wind ? weatherDetails?.wind.speed : null}</h3>
-              </div>
+                <div className="dayGrid">
+                  <div>
+                    <h3 className="details">Dew point: {weatherDetails?.wind ? weatherDetails?.wind.speed : null}</h3>
+                  </div>
+                  <div>
+                    <h3 className="details">Visibility: {weatherDetails?.wind ? weatherDetails?.wind.speed : null}</h3>
+                  </div>
+                  <div>
+                    <h3 className="details">humidity: {weatherDetails?.main.humidity}</h3>
+                  </div>
+                  <div>
+                    <h3 className="details">UV: {weatherDetails?.wind ? weatherDetails?.wind.speed : null}</h3>
+                  </div>
+                </div>
+                <div className="daySection">
+                  
+                </div>
 
-              <div className="daySection">
-                <h3 className="details">humidity: {weatherDetails?.main.humidity}</h3>
-                <h3 className="details">UV: {weatherDetails?.wind ? weatherDetails?.wind.speed : null}</h3>
+                <div className="daySection">
+                </div>
               </div>
-            </div>
+          </div>
+
+          <div className="otherDays">
+            <h2>Tue</h2>
+            <img src={humidity} alt="" />
+            <h2>50</h2>
+          </div>
+
+          <div className="otherDays">
+            <h2>Tue</h2>
+            <img src={humidity} alt="" />
+            <h2>50</h2>
+          </div>
+
+          <div className="otherDays">
+            <h2>Tue</h2>
+            <img src={humidity} alt="" />
+            <h2>50</h2>
+          </div>
+
+          <div className="otherDays">
+            <h2>Tue</h2>
+            <img src={humidity} alt="" />
+            <h2>50</h2>
+          </div>
+
+          <div className="otherDays">
+            <h2>Tue</h2>
+            <img src={humidity} alt="" />
+            <h2>50</h2>
           </div>
         </div>
       </div>
@@ -216,7 +257,7 @@ const WeatherRoute = () => {
             <h3>Humidity</h3>
           </div>
           <p className="windValue">{weatherDetails?.main.humidity}</p>
-          <span className="unit">mph</span>
+          <span className="unit">%</span>
         </section>
       </div>
 
@@ -231,7 +272,7 @@ const WeatherRoute = () => {
             <h3>Wind Speed</h3>
           </div>
           <p className="windValue">{weatherDetails?.wind.speed}</p>
-          <span className="unit">mph</span>
+          <span className="unit">m/s</span>
         </section>
       </div>
 
@@ -246,7 +287,7 @@ const WeatherRoute = () => {
             <h3>Feels like</h3>
           </div>
           <p className="windValue">{weatherDetails?.main.feels_like}</p>
-          <span className="unit">mph</span>
+          <span className="unit">C</span>
         </section>
       </div>
 
@@ -261,7 +302,7 @@ const WeatherRoute = () => {
             <h3>Visibility</h3>
           </div>
           <p className="windValue">{weatherDetails?.visibility}</p>
-          <span className="unit">mph</span>
+          <span className="unit">m</span>
         </section>
       </div>
 
@@ -277,7 +318,7 @@ const WeatherRoute = () => {
           </div>
 
             <p className="windValue">{weatherDetails?.main.pressure}</p>
-            <span className="unit">mph</span>
+            <span className="unit">hPa</span>
         </section>
       </div>
     </div>

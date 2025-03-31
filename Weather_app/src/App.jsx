@@ -144,49 +144,24 @@ const WeatherRoute = () => {
       <div className="forecast">
         <h2 className="forecastTitle">Weather for the next 5 days</h2>
         <div className="forecastGrid">
-          {[
-            {
-              day: "Tue",
-              temp: "10",
-              icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
-            },
-            {
-              day: "Tue",
-              temp: "-10",
-              icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
-            },
-            {
-              day: "Tue",
-              temp: "23",
-              icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
-            },
-            {
-              day: "Tue",
-              temp: "35",
-              icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
-            },
-            {
-              day: "Tue",
-              temp: "200",
-              icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
-            },
-            {
-              day: "Tue",
-              temp: "32",
-              icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/3256debd33e29a0a2f4f7318ae564fc50154b490?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
-            },
-          ].map((day, index) => (
-            <div
-              key={index}
-              className={`forecastDay ${index === 0 ? "bordered" : ""}`}
-            >
-              <h3>{day.day}</h3>
-              {day.icon && (
-                <img src={day.icon} alt="Weather" className="forecastIcon" />
-              )}
-              <span className="forecastTemp">{day.temp}</span>
+          <div className="forecastDay">
+            <img src={guage} alt="guage icon" />
+
+            <div className="today">
+              <h1 className="todayDate">Mon, 25, Oct , Clouds, </h1>
+              <h3 className="details"> Feels like: <span> 16 </span></h3>
+
+              <div className="daySection">
+                <h3 className="details">Dew point: {weatherDetails?.wind ? weatherDetails?.wind.speed : null}</h3>
+                <h3 className="details">Visibility: {weatherDetails?.wind ? weatherDetails?.wind.speed : null}</h3>
+              </div>
+
+              <div className="daySection">
+                <h3 className="details">humidity: {weatherDetails?.main.humidity}</h3>
+                <h3 className="details">UV: {weatherDetails?.wind ? weatherDetails?.wind.speed : null}</h3>
+              </div>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </div>

@@ -820,3 +820,50 @@ export default App
   //     <span className="forecastTemp">{day.temp}</span>
   //   </div>
   // ))}
+
+
+  // <div className="forecastGrid">
+  //         {[
+  //           {
+  //             day: "Tue",
+  //             temp: "10",
+  //             icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
+  //           },
+  //           {
+  //             day: "Tue",
+  //             temp: "-10",
+  //             icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
+  //           },
+  //           {
+  //             day: "Tue",
+  //             temp: "23",
+  //             icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
+  //           },
+  //           {
+  //             day: "Tue",
+  //             temp: "35",
+  //             icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
+  //           },
+  //           {
+  //             day: "Tue",
+  //             temp: "200",
+  //             icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/80732e6720b9254f6f43217eae9e520f207311da?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
+  //           },
+  //           {
+  //             day: "Tue",
+  //             temp: "32",
+  //             icon: "https://cdn.builder.io/api/v1/image/assets/TEMP/3256debd33e29a0a2f4f7318ae564fc50154b490?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed",
+  //           },
+  //         ].map((day, index) => (
+  //           <div
+  //             key={index}
+  //             className={`forecastDay ${index === 0 ? "bordered" : ""}`}
+  //           >
+  //             <h3>{day.day}</h3>
+  //             {day.icon && (
+  //               <img src={day.icon} alt="Weather" className="forecastIcon" />
+  //             )}
+  //             <span className="forecastTemp">{day.temp}</span>
+  //           </div>
+  //         ))}
+  //       </div>

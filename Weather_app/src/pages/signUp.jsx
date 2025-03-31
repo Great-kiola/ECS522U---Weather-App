@@ -1,43 +1,60 @@
+
 // Package Import
 import React, { useState, useEffect } from 'react';
 
 // Firebase imports
-import { auth } from '../firebase'; // Confirm the relative path is correct
+import { auth } from '../firebase';
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 // Other imports
-import "../styling/signUp.css"
+import '../signUp.css';
 import google_icon from "../assets/google.svg";
 import logo from "/rainy-day.png";
 import { Link } from 'react-router-dom';
 
 export default function SignUp() {
-
     const initialForm = {
         name: "",
         email: "",
         password: ""
     };
 
+    // State management
     const [form, setForm] = useState(initialForm);
     const [formErr, setFormErr] = useState({});
     const [isSubmit, setIsSubmit] = useState(false);
+    const [emailValid, setEmailValid] = useState(null);
+    const [passwordStrength, setPasswordStrength] = useState('');
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setForm({ ...form, [name]: value });
+
+        if (name === 'email') {
+            const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            setEmailValid(regex.test(value));
+        }
+
+        if (name === 'password') {
+            setPasswordStrength(checkPasswordStrength(value));
+        }
+    };
+
+    const checkPasswordStrength = (password) => {
+        if (password.length < 6) return 'Weak';
+        if (password.match(/[A-Za-z]/) && password.match(/[0-9]/) && password.length >= 8) return 'Strong';
+        return 'Medium';
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
         setFormErr(validate(form));
         setIsSubmit(true);
 
         if (Object.keys(validate(form)).length === 0) {
             createUserWithEmailAndPassword(auth, form.email, form.password)
                 .then((userCredential) => {
-                    console.log('User signed up:', userCredential.user);
+                    console.log('User is signed up:', userCredential.user);
                     window.location.href = "/";
                 })
                 .catch((error) => {
@@ -52,11 +69,11 @@ export default function SignUp() {
 
         signInWithPopup(auth, provider)
             .then((result) => {
-                console.log("Google sign-up success:", result.user);
+                console.log("Google Sign Up successful!:", result.user);
                 window.location.href = "/";
             })
             .catch((error) => {
-                console.error("Google sign-up error:", error.message);
+                console.error("Error with signing up :( ):", error.message);
             });
     };
 
@@ -65,17 +82,17 @@ export default function SignUp() {
         const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!value.password) {
-            errors.password = "Password is required";
+            errors.password = "Password  required";
         }
 
         if (!value.name) {
-            errors.name = "Enter your name";
+            errors.name = "Enter name";
         }
 
         if (!value.email) {
-            errors.email = "Email is required";
+            errors.email = "Email required";
         } else if (!regex.test(value.email)) {
-            errors.email = "Email is invalid";
+            errors.email = "Email invalid";
         }
         return errors;
     };
@@ -128,11 +145,14 @@ export default function SignUp() {
                         <input
                             type="email"
                             placeholder='******@anymail.com'
-                            className={formErr.email ? 'inputErr' : ''}
+                            className={formErr.email || emailValid === false ? 'inputErr' : ''}
                             name="email"
                             value={form.email}
                             onChange={handleChange}
                         />
+                        {form.email && emailValid === false && (
+                            <p className="err">Invalid email format</p>
+                        )}
 
                         <div className='infoBar'>
                             <label>Password</label>
@@ -146,12 +166,15 @@ export default function SignUp() {
                             value={form.password}
                             onChange={handleChange}
                         />
-
+                        {form.password && (
+                            <p className={`passwordStrength ${passwordStrength.toLowerCase()}`}>
+                                Password Strength: {passwordStrength}
+                            </p>
+                        )}
                     </div>
 
                     <button type='submit'> Sign Up </button>
                     {formErr.auth && <p className='err'>{formErr.auth}</p>}
-
                 </form>
 
                 <h3>Already have an account?

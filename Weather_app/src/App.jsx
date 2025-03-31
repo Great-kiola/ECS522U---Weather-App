@@ -131,7 +131,7 @@ const WeatherRoute = () => {
 
             <div className="pressure">
               <img src={speed} alt="speed" />
-              <span>{weatherDetails?.wind ? weatherDetails?.wind.speed : null} km/hr</span>
+              <span>{weatherDetails?.wind ? `${Math.floor(weatherDetails?.wind.speed *2.237)}` : null} mph</span>
             </div>
 
 
@@ -139,7 +139,6 @@ const WeatherRoute = () => {
           </div>
         </div>
       </div>
-
       {/* Forecast */}
       <div className="forecast">
         <h2 className="forecastTitle">Weather for the next 5 days</h2>
@@ -225,27 +224,29 @@ const WeatherRoute = () => {
         <div className="riseSet">
           <div className="sunriseTime">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9d43d7fc036cfde6ea1048c5d19714a999ab00?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/43d13020e59bf08717459f4ac3e4241db76c0ed4?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
               alt="Sunrise"
               className="timeIcon"
             />
-
-            <p>6:35</p>
+            {/**1000 is to convert from Unix timestamp(used by API which is seconds since 1/1/1970) to javascript timestamp(milliseconds since 1/1/1970)
+             * hour: '2-digit' is to get the hour in 2 digit format (01, 02, ... 12, 13, ... 23)
+             * minute: '2-digit' is to get the minute in 2 digit format (00, 01, ... 59)
+             */}
+            <p>{weatherDetails?.sys?.sunrise ? new Date(weatherDetails.sys.sunrise * 1000).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }): '--:--'}</p>
           </div>
-
+          
           <div className="sunsetTime">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/43d13020e59bf08717459f4ac3e4241db76c0ed4?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+              src="https://cdn.builder.io/api/v1/image/assets/TEMP/9d9d43d7fc036cfde6ea1048c5d19714a999ab00?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
               alt="Sunset"
               className="timeIcon"
             />
-            <p>12:35 PM</p>
+            <p>{weatherDetails?.sys?.sunset? new Date(weatherDetails.sys.sunset * 1000).toLocaleTimeString([],{ hour: '2-digit', minute: '2-digit' }): '--:--'}</p>
           </div>
         </div>
 
 
       </div>
-
       <div className="metricRow">
         <section className="Humidity">
           <div className="metricHeader">
@@ -256,8 +257,11 @@ const WeatherRoute = () => {
             />
             <h3>Humidity</h3>
           </div>
-          <p className="windValue">{weatherDetails?.main.humidity}</p>
-          <span className="unit">%</span>
+          {weatherDetails?.main?.humidity ? (
+            <>
+              <p className="windValue">{weatherDetails.main.humidity} %</p>
+            </>
+          ) : null}
         </section>
       </div>
 
@@ -271,8 +275,11 @@ const WeatherRoute = () => {
             />
             <h3>Wind Speed</h3>
           </div>
-          <p className="windValue">{weatherDetails?.wind.speed}</p>
-          <span className="unit">m/s</span>
+          {weatherDetails?.wind?.speed ? (
+            <>
+              <p className="windValue">{Math.floor(weatherDetails?.wind.speed *2.237)}mph</p>
+            </>
+          ) : null}
         </section>
       </div>
 
@@ -286,8 +293,11 @@ const WeatherRoute = () => {
             />
             <h3>Feels like</h3>
           </div>
-          <p className="windValue">{weatherDetails?.main.feels_like}</p>
-          <span className="unit">C</span>
+          {weatherDetails?.main?.feels_like ? (
+            <>
+              <p className="windValue">{Math.floor(weatherDetails.main.feels_like-273.15)} °C</p>
+            </>
+          ) : null}
         </section>
       </div>
 
@@ -301,8 +311,11 @@ const WeatherRoute = () => {
             />
             <h3>Visibility</h3>
           </div>
-          <p className="windValue">{weatherDetails?.visibility}</p>
-          <span className="unit">m</span>
+          {weatherDetails?.visibility ? (
+            <>
+              <p className="windValue">{weatherDetails.visibility/1000} km</p>
+            </>
+          ) : null}
         </section>
       </div>
 
@@ -316,9 +329,11 @@ const WeatherRoute = () => {
             />
             <h3>Pressure</h3>
           </div>
-
-            <p className="windValue">{weatherDetails?.main.pressure}</p>
-            <span className="unit">hPa</span>
+          {weatherDetails?.main?.pressure ? (
+            <>
+            <p className="windValue">{weatherDetails.main.pressure} hPa</p>
+            </>
+          ) : null}
         </section>
       </div>
     </div>

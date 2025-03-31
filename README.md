@@ -12,6 +12,7 @@ Install my-project with npm
 ```bash
 cd ECS522U--Weather-App
 cd Weather-app
+npm install firebase
 npm run dev
 ```
 

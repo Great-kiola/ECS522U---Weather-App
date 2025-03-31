@@ -1,35 +1,40 @@
 import React from "react";
+import Axios from "axios";
+import { useState } from 'react'
+
+
 import "../src/styling/style.css";
 import guage from "./assets/gauge-medium-svgrepo-com.svg"
 import speed from "./assets/speed-meter-svgrepo-com.svg"
 import humidity from "./assets/humidity-svgrepo-com.svg"
 import pin from "./assets/location-pin-svgrepo-com.svg"
-import Axios from "axios";
 
 
-import { useState } from 'react'
 // import { useEffect } from "react";
 
 // Main WeatherRoute Component
 const WeatherRoute = () => {
 
-  const [location, setLocation] = useState('')
   // const city = "Brazil"
   const [weatherDetails, setweatherDetails] = useState(null)
-  
+  const [val, setVal] = useState('')
+
   const API_key = "d4c1f3085a13b8325c6db3814dc45b81";
 
 
-  const change = (e) => {
-    setLocation(e.target.value)
+
+  const handleChange = (event) => {
+    setVal(event.target.value);
   }
 
   const search = () => {
 
-    Axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_key}`).then((res) => {
+    // let location = val
+    console.log(val)
+
+    Axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${val}&appid=${API_key}`).then((res) => {
       setweatherDetails(res.data);
       console.log(res.data)
-      console.log(location)
     })
     console.log("Hello")
   }
@@ -65,23 +70,28 @@ const WeatherRoute = () => {
     <div className="currentWeather">
 
       <div className="weatherCard">
-        <div className="searchBar">
-          <input
-            type="text"
-            placeholder="Search for a different location"
-            className="searchInput"
-            onChange={change}
-            value={location}
-          />
-          <button onClick={search} className="search--Btn">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4ec8eb5f912c3be897baec8ed140a2642e8f0c3?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-              alt="Search"
+          <form className="searchBar" onSubmit={(e) => {
+            e.preventDefault();
+            search()
+          }}>
+            <input
+              type="text"
+              placeholder="Search for a different location"
+              className="searchInput"
+              onChange={handleChange}
+              value={val}
+
+              autoFocus
+              ref={(input) => input && input.focus()}
+              
             />
-          </button>
-        </div>
-
-
+            <button type="submit" className="search--Btn">
+              <img
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4ec8eb5f912c3be897baec8ed140a2642e8f0c3?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+                alt="Search"
+              />
+            </button>
+          </form>
 
         <div className="locationInfo">
           <div className="locationHeader">

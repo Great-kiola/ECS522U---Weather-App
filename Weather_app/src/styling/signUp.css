@@ -1,3 +1,9 @@
+
+body {
+    font-family: "Inter", sans-serif;
+    background-color: var(--background-color);
+}
+
 .title{
     display: flex;
     place-content: center;
@@ -12,3 +18,22 @@ h1{
     margin-top: 30px;
 }
 
+input{
+    margin-bottom: 10px;
+}
+.passwordStrength {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.passwordStrength.weak {
+    color: #C1292E; 
+}
+
+.passwordStrength.medium {
+    color: orange;
+}
+
+.passwordStrength.strong {
+    color: #53DD6C; 
+}

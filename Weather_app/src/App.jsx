@@ -18,7 +18,6 @@ import pin from "./assets/location-pin-svgrepo-com.svg"
 // Main WeatherRoute Component
 const WeatherRoute = () => {
 
-  // const city = "Brazil"
   const [weatherDetails, setweatherDetails] = useState(null)
   const [val, setVal] = useState('')
 
@@ -32,7 +31,6 @@ const WeatherRoute = () => {
 
   const search = () => {
 
-    // let location = val
     console.log(val)
 
     Axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${val}&appid=${API_key}`).then((res) => {
@@ -85,8 +83,6 @@ const WeatherRoute = () => {
               value={val}
 
               autoFocus
-              ref={(input) => input && input.focus()}
-              
             />
             <button type="submit" className="search--Btn">
               <img
@@ -238,7 +234,7 @@ const WeatherRoute = () => {
         <section className="Humidity">
           <div className="metricHeader">
             <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/1143880fe42722dc31e18fd2cab9185f163a6244?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+              src={humidity}
               alt="Humidity"
               className="metricIcon"
             />
@@ -305,10 +301,8 @@ const WeatherRoute = () => {
             <h3>Pressure</h3>
           </div>
 
-          <div className="valUnit">
             <p className="windValue">{weatherDetails?.main.pressure}</p>
-            <p className="unit">mph</p>
-          </div>
+            <span className="unit">mph</span>
         </section>
       </div>
     </div>

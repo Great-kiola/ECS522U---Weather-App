@@ -110,7 +110,6 @@
   font-family: "Sora", sans-serif;
   font-style: normal;
 }
-
 .tempUnit {
   display: flex;
 
@@ -267,6 +266,7 @@
 
 .sunriseTime,
 .sunsetTime {
+  color: #23619a;
   display: flex;
   align-items: center;
   gap: 5px;

@@ -148,7 +148,7 @@ const WeatherRoute = () => {
             <img src={guage} alt="guage icon" />
 
             <div className="today">
-              <h1 className="todayDate">Mon, 25, Oct , Clouds, </h1>
+              <h1 className="todayDate">Mon, 25, Oct,  {weatherDetails?.weather[0].main} </h1>
               <h3 className="details"> Feels like: <span> 16 </span></h3>
 
               <div className="daySection">

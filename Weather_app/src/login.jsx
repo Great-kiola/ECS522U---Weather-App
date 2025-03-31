@@ -11,7 +11,7 @@ import {
 } from 'firebase/auth';
 
 // Other imports
-import './Login.css';
+import '../src/styling/Login.css';
 import google_icon from './assets/google.svg';
 import facebook_icon from './assets/facebook.svg';
 import logo from '/rainy-day.png';

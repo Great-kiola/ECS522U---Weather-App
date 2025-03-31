@@ -6,7 +6,7 @@ import { auth } from '../firebase'; // Confirm the relative path is correct
 import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 // Other imports
-import '../signUp.css';
+import "../styling/signUp.css"
 import google_icon from "../assets/google.svg";
 import logo from "/rainy-day.png";
 import { Link } from 'react-router-dom';

@@ -667,6 +667,71 @@ const WeatherRoute = () => {
     </section>
   );
 
+  const VehicleWeather = () => {
+    const [selectedVehicle, setSelectedVehicle] = useState("Cyclist");
+  
+    // Function to determine if it's safe for cyclists
+    const isSafeForCyclists = (windSpeed, temp) => {
+      if (windSpeed > 20) return "Not safe: High wind speeds.";
+      if (temp < 0) return "Not safe: Freezing temperatures.";
+      return "Safe to travel.";
+    };
+  
+    return (
+      <section className="vehicleWeather">
+        <h2 className="vehicleTitle">Choose Your Mode of Travel</h2>
+        <div className="vehicleButtons">
+          <button
+            className={`vehicleButton ${selectedVehicle === "Cyclist" ? "active" : ""}`}
+            onClick={() => setSelectedVehicle("Cyclist")}
+          >
+            Cyclist
+          </button>
+          <button
+            className={`vehicleButton ${selectedVehicle === "Car" ? "active" : ""}`}
+            onClick={() => setSelectedVehicle("Car")}
+          >
+            Car
+          </button>
+          <button
+            className={`vehicleButton ${selectedVehicle === "Train" ? "active" : ""}`}
+            onClick={() => setSelectedVehicle("Train")}
+          >
+            Train
+          </button>
+        </div>
+  
+        <div className="vehicleInfo">
+          {selectedVehicle === "Cyclist" && (
+            <div className="cyclistInfo">
+              <h3>Cyclist Information</h3>
+              <p>Wind Speed: {weatherDetails?.wind?.speed ? `${Math.floor(weatherDetails.wind.speed * 2.237)} mph` : "N/A"}</p>
+              <p>Temperature: {weatherDetails?.main ? `${Math.floor(weatherDetails.main.temp - 273.15)}°C` : "N/A"}</p>
+              <p>Weather Condition: {weatherDetails?.weather ? weatherDetails.weather[0].main : "N/A"}</p>
+              <p>Safety: {weatherDetails?.wind && weatherDetails?.main ? isSafeForCyclists(Math.floor(weatherDetails.wind.speed * 2.237), Math.floor(weatherDetails.main.temp - 273.15)) : "N/A"}</p>
+            </div>
+          )}
+  
+          {selectedVehicle === "Car" && (
+            <div className="carInfo">
+              <h3>Car Information</h3>
+              <p>Temperature: {weatherDetails?.main ? `${Math.floor(weatherDetails.main.temp - 273.15)}°C` : "N/A"}</p>
+              <p>Weather Condition: {weatherDetails?.weather ? weatherDetails.weather[0].main : "N/A"}</p>
+              <p>Road Conditions: Placeholder for TFL API integration.</p>
+            </div>
+          )}
+  
+          {selectedVehicle === "Train" && (
+            <div className="trainInfo">
+              <h3>Train Information</h3>
+              <p>Train information will be integrated later using the TFL API.</p>
+            </div>
+          )}
+        </div>
+      </section>
+    );
+  };
+
   return (
     <>
       <Header />
@@ -674,7 +739,7 @@ const WeatherRoute = () => {
         <CurrentWeather />
         <WeatherMetrics />
       </div>
-
+      <VehicleWeather />
       <RouteTracker />
     </>
   );

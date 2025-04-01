@@ -55,14 +55,7 @@ const WeatherRoute = () => {
       <h1 className="title">
         <span className="titleHighlight">Weather</span>Route
       </h1>
-      <nav className="navigation">
-        <ul className="navList">
-          <li className="navItem">General</li>
-          <li className="navItem">Cyclist</li>
-          <li className="navItem">Trains</li>
-          <li className="navItem">Auto Vehicle</li>
-        </ul>
-      </nav>
+      
     </header>
   );
 
@@ -441,240 +434,129 @@ const WeatherRoute = () => {
     );
   };
 
-  // Route Tracker Component
-  const RouteTracker = () => (
-    <section className="routeTracker">
-      <h2 className="routeTitle">
-        TRAVELLING BY BIKE: CYCLISTS WEATHER TRACKER
-      </h2>
-      <div className="routeContent">
-        <div className="routePlanner">
-          <div className="routeMap">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/23fe541d5033b30f34c490cad148f4ca8669debc?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-              alt="Route Map"
-              className="mapImage"
-            />
-            <form className="routeForm">
-              <div className="locationInput">
-                <label htmlFor="startPoint">Starting Point:</label>
-                <input
-                  type="text"
-                  id="startPoint"
-                  placeholder="Enter location"
-                  className="inputField"
-                />
-              </div>
-              <div className="locationInput">
-                <label htmlFor="destination">Destination 1:</label>
-                <div className="destinationWrapper">
-                  <input
-                    type="text"
-                    id="destination"
-                    placeholder="Enter location"
-                    className="inputField"
-                  />
-                  <div className="timeSelector">
-                    <span>Time</span>
-                    <img
-                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/ae276bd8a14e01f8aa0ecfd1db634d510bf77811?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-                      alt="Time"
-                      className="timeIcon"
-                    />
-                  </div>
-                </div>
-              </div>
-              <button type="button" className="addDestination">
-                Add destination +
-              </button>
-              <button type="submit" className="getWeather">
-                Get Route Weather
-              </button>
-            </form>
-          </div>
-          <WeatherWarning />
-        </div>
-        <LocationWeather />
-      </div>
-    </section>
-  );
-
-  // Route Tracker Component
-  const RouteTracker1 = () => (
-    <section className="routeTracker">
-      <h2 className="routeTitle">
-        TRAVELLING BY BIKE: CYCLISTS WEATHER TRACKER
-      </h2>
-      <div className="routeContent">
-        <div className="routePlanner">
-          <div className="routeMap">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/23fe541d5033b30f34c490cad148f4ca8669debc?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-              alt="Route Map"
-              className="mapImage"
-            />
-            <form className="routeForm">
-              <div className="locationInput">
-                <label htmlFor="startPoint">Starting Point:</label>
-                <input
-                  type="text"
-                  id="startPoint"
-                  placeholder="Enter location"
-                  className="inputField"
-                />
-              </div>
-              <div className="locationInput">
-                <label htmlFor="destination">Destination 1:</label>
-                <div className="destinationWrapper">
-                  <input
-                    type="text"
-                    id="destination"
-                    placeholder="Enter location"
-                    className="inputField"
-                  />
-                  <div className="timeSelector">
-                    <span>Time</span>
-                    <img
-                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/ae276bd8a14e01f8aa0ecfd1db634d510bf77811?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-                      alt="Time"
-                      className="timeIcon"
-                    />
-                  </div>
-                </div>
-              </div>
-              <button type="button" className="addDestination">
-                Add destination +
-              </button>
-              <button type="submit" className="getWeather">
-                Get Route Weather
-              </button>
-            </form>
-          </div>
-          <WeatherWarning />
-        </div>
-        <LocationWeather />
-      </div>
-    </section>
-  );
-  // Route Tracker Component
-  const RouteTracker2 = () => (
-    <section className="routeTracker">
-      <h2 className="routeTitle">TRAVELLING BY TRAIN: WEATHER TRACKER</h2>
-      <div className="routeContent">
-        <div className="routePlanner">
-          <div className="routeMap">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/23fe541d5033b30f34c490cad148f4ca8669debc?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-              alt="Route Map"
-              className="mapImage"
-            />
-            <form className="routeForm">
-              <div className="locationInput">
-                <label htmlFor="startPoint">Starting Point:</label>
-                <input
-                  type="text"
-                  id="startPoint"
-                  placeholder="Enter location"
-                  className="inputField"
-                />
-              </div>
-              <div className="locationInput">
-                <label htmlFor="destination">Destination 1:</label>
-                <div className="destinationWrapper">
-                  <input
-                    type="text"
-                    id="destination"
-                    placeholder="Enter location"
-                    className="inputField"
-                  />
-                  <div className="timeSelector">
-                    <span>Time</span>
-                    <img
-                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/ae276bd8a14e01f8aa0ecfd1db634d510bf77811?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-                      alt="Time"
-                      className="timeIcon"
-                    />
-                  </div>
-                </div>
-              </div>
-              <button type="button" className="addDestination">
-                Add destination +
-              </button>
-              <button type="submit" className="getWeather">
-                Get Route Weather
-              </button>
-            </form>
-          </div>
-          <WeatherWarning />
-        </div>
-        <LocationWeather />
-      </div>
-    </section>
-  );
-  // Route Tracker Component
-  const RouteTracker3 = () => (
-    <section className="routeTracker">
-      <h2 className="routeTitle">TRAVELLING BY CAR: WEATHER TRACKER</h2>
-      <div className="routeContent">
-        <div className="routePlanner">
-          <div className="routeMap">
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/23fe541d5033b30f34c490cad148f4ca8669debc?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-              alt="Route Map"
-              className="mapImage"
-            />
-            <form className="routeForm">
-              <div className="locationInput">
-                <label htmlFor="startPoint">Starting Point:</label>
-                <input
-                  type="text"
-                  id="startPoint"
-                  placeholder="Enter location"
-                  className="inputField"
-                />
-              </div>
-              <div className="locationInput">
-                <label htmlFor="destination">Destination 1:</label>
-                <div className="destinationWrapper">
-                  <input
-                    type="text"
-                    id="destination"
-                    placeholder="Enter location"
-                    className="inputField"
-                  />
-                  <div className="timeSelector">
-                    <span>Time</span>
-                    <img
-                      src="https://cdn.builder.io/api/v1/image/assets/TEMP/ae276bd8a14e01f8aa0ecfd1db634d510bf77811?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-                      alt="Time"
-                      className="timeIcon"
-                    />
-                  </div>
-                </div>
-              </div>
-              <button type="button" className="addDestination">
-                Add destination +
-              </button>
-              <button type="submit" className="getWeather">
-                Get Route Weather
-              </button>
-            </form>
-          </div>
-          <WeatherWarning />
-        </div>
-        <LocationWeather />
-      </div>
-    </section>
-  );
-
   const VehicleWeather = () => {
     const [selectedVehicle, setSelectedVehicle] = useState("Cyclist");
+    const [startPoint, setStartPoint] = useState("");
+    const [destination, setDestination] = useState("");
+    const [startWeather, setStartWeather] = useState(null);
+    const [destinationWeather, setDestinationWeather] = useState(null);
+    const [recommendation, setRecommendation] = useState("");
+    const [roadDisruptions, setRoadDisruptions] = useState([]);
+    
+  
+    const API_key = "d4c1f3085a13b8325c6db3814dc45b81";
   
     // Function to determine if it's safe for cyclists
     const isSafeForCyclists = (windSpeed, temp) => {
       if (windSpeed > 20) return "Not safe: High wind speeds.";
       if (temp < 0) return "Not safe: Freezing temperatures.";
       return "Safe to travel.";
+    };
+  
+    // Function to fetch weather data for a location
+    const fetchWeatherData = async (location) => {
+      try {
+        const response = await Axios.get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${API_key}`
+        );
+        return response.data;
+      } catch (error) {
+        console.error(`Error fetching weather data for ${location}:`, error);
+        return null;
+      }
+    };
+
+    const fetchRoadDisruptions = async () => {
+      const road = "M25"; // Only fetch disruptions for M25
+      const startDate = new Date().toISOString().split("T")[0]; // Today's date
+      const endDate = new Date(new Date().setDate(new Date().getDate() + 7)) // 7 days from now
+        .toISOString()
+        .split("T")[0];
+    
+      try {
+        const response = await Axios.get(
+          `https://api.tfl.gov.uk/Road/${road}/Disruption?startDate=${startDate}&endDate=${endDate}`
+        );
+    
+        const disruptions = response.data || []; // Ensure disruptions is always an array
+        return { road, disruptions };
+      } catch (error) {
+        console.error("Error fetching road disruptions:", error);
+        return { road, disruptions: [] }; // Return an empty array on error
+      }
+    };
+  
+    // Handle route submission
+    const handleRouteSubmit = async (e) => {
+      e.preventDefault();
+    
+      if (!startPoint || !destination) {
+        alert("Please enter both starting point and destination.");
+        return;
+      }
+    
+      // Fetch weather data for both locations
+      const startData = await fetchWeatherData(startPoint);
+      const destinationData = await fetchWeatherData(destination);
+    
+      setStartWeather(startData);
+      setDestinationWeather(destinationData);
+    
+      if (startData && destinationData) {
+        const startWindSpeed = startData.wind ? Math.floor(startData.wind.speed * 2.237) : 0;
+        const startTemp = startData.main ? Math.floor(startData.main.temp - 273.15) : 0;
+        const destinationWindSpeed = destinationData.wind ? Math.floor(destinationData.wind.speed * 2.237) : 0;
+        const destinationTemp = destinationData.main ? Math.floor(destinationData.main.temp - 273.15) : 0;
+    
+        // Cyclist Recommendations
+        if (selectedVehicle === "Cyclist") {
+          let cyclistMessage = "Recommendations for Cyclists:\n";
+    
+          if (startWindSpeed > 20 || destinationWindSpeed > 20) {
+            cyclistMessage += "- Be cautious of high winds.\n";
+          }
+          if (startTemp < 0 || destinationTemp < 0) {
+            cyclistMessage += "- Carry warm clothing.\n";
+          }
+          if (startData.weather[0].main.includes("Rain") || destinationData.weather[0].main.includes("Rain")) {
+            cyclistMessage += "- Carry a raincoat.\n";
+          }
+          if (startWindSpeed > 30 || destinationWindSpeed > 30) {
+            cyclistMessage += "- Too dangerous to travel due to extreme winds.\n";
+          }
+    
+          setRecommendation(cyclistMessage);
+        }
+    
+        // Car Recommendations
+        if (selectedVehicle === "Car") {
+          let carMessage = "Recommendations for Car Travel:\n";
+    
+          if (startWindSpeed > 20 || destinationWindSpeed > 20) {
+            carMessage += "- Be cautious of high winds; they may reduce vehicle stability.\n";
+          }
+          if (startData.weather[0].main.includes("Rain") || destinationData.weather[0].main.includes("Rain")) {
+            carMessage += "- Roads may be slippery due to rain. Drive carefully.\n";
+          }
+          if (startData.weather[0].main.includes("Fog") || destinationData.weather[0].main.includes("Fog")) {
+            carMessage += "- Low visibility due to fog. Use fog lights and reduce speed.\n";
+          }
+          if (startTemp < 0 || destinationTemp < 0) {
+            carMessage += "- Check tire pressure and carry emergency supplies for freezing temperatures.\n";
+          }
+          if (startTemp > 35 || destinationTemp > 35) {
+            carMessage += "- Ensure your car's cooling system is functioning properly for high temperatures.\n";
+          }
+    
+          setRecommendation(carMessage);
+        }
+      } else {
+        setRecommendation("Unable to fetch weather data for one or both locations.");
+      }
+
+      // Fetch road disruptions
+      const roadDisruptionData = await fetchRoadDisruptions();
+      setRoadDisruptions([roadDisruptionData]);
     };
   
     return (
@@ -704,20 +586,142 @@ const WeatherRoute = () => {
         <div className="vehicleInfo">
           {selectedVehicle === "Cyclist" && (
             <div className="cyclistInfo">
-              <h3>Cyclist Information</h3>
-              <p>Wind Speed: {weatherDetails?.wind?.speed ? `${Math.floor(weatherDetails.wind.speed * 2.237)} mph` : "N/A"}</p>
-              <p>Temperature: {weatherDetails?.main ? `${Math.floor(weatherDetails.main.temp - 273.15)}°C` : "N/A"}</p>
-              <p>Weather Condition: {weatherDetails?.weather ? weatherDetails.weather[0].main : "N/A"}</p>
-              <p>Safety: {weatherDetails?.wind && weatherDetails?.main ? isSafeForCyclists(Math.floor(weatherDetails.wind.speed * 2.237), Math.floor(weatherDetails.main.temp - 273.15)) : "N/A"}</p>
+              <h2>Cyclist Information</h2>
+              <form className="routeForm" onSubmit={handleRouteSubmit}>
+                <div className="locationInput">
+                  <label htmlFor="startPoint"><h3>Starting Point</h3></label>
+                  <input
+                    type="text"
+                    id="startPoint"
+                    placeholder="Enter location"
+                    className="inputField"
+                    value={startPoint}
+                    onChange={(e) => setStartPoint(e.target.value)}
+                  />
+                </div>
+                <div className="locationInput">
+                  <label htmlFor="destination"><h3>Destination:</h3></label>
+                  <input
+                    type="text"
+                    id="destination"
+                    placeholder="Enter location"
+                    className="inputField"
+                    value={destination}
+                    onChange={(e) => setDestination(e.target.value)}
+                  />
+                </div>
+                <button type="submit" className="getWeather">
+                  <h3>Get Route Weather</h3>
+                </button>
+              </form>
+  
+              {/* Display weather data for both locations */}
+              {startWeather && destinationWeather && (
+                <div className="routeWeather">
+                  <h4>Weather at Starting Point ({startPoint}):</h4>
+                  <p>Visibility: {startWeather.visibility / 1000} km</p>
+                  <p>Forecast: {startWeather.weather[0].main}</p>
+                  <p>Wind Speed: {Math.floor(startWeather.wind.speed * 2.237)} mph</p>
+                  <p>Feels Like: {Math.floor(startWeather.main.feels_like - 273.15)}°C</p>
+  
+                  <h4>Weather at Destination ({destination}):</h4>
+                  <p>Visibility: {destinationWeather.visibility / 1000} km</p>
+                  <p>Forecast: {destinationWeather.weather[0].main}</p>
+                  <p>Wind Speed: {Math.floor(destinationWeather.wind.speed * 2.237)} mph</p>
+                  <p>Feels Like: {Math.floor(destinationWeather.main.feels_like - 273.15)}°C</p>
+                </div>
+              )}
+  
+              {/* Display cyclist-specific recommendations */}
+              {recommendation && (
+                <div className="recommendation">
+                  <h4>Recommendations for Cyclists:</h4>
+                  <p>{recommendation}</p>
+                </div>
+              )}
             </div>
           )}
   
           {selectedVehicle === "Car" && (
             <div className="carInfo">
-              <h3>Car Information</h3>
-              <p>Temperature: {weatherDetails?.main ? `${Math.floor(weatherDetails.main.temp - 273.15)}°C` : "N/A"}</p>
-              <p>Weather Condition: {weatherDetails?.weather ? weatherDetails.weather[0].main : "N/A"}</p>
-              <p>Road Conditions: Placeholder for TFL API integration.</p>
+              <h2>Car Information</h2>
+              <form className="routeForm" onSubmit={handleRouteSubmit}>
+                <div className="locationInput">
+                  <label htmlFor="startPoint"><h3>Starting Point</h3></label>
+                  <input
+                    type="text"
+                    id="startPoint"
+                    placeholder="Enter location"
+                    className="inputField"
+                    value={startPoint}
+                    onChange={(e) => setStartPoint(e.target.value)}
+                  />
+                </div>
+                <div className="locationInput">
+                  <label htmlFor="destination"><h3>Destination:</h3></label>
+                  <input
+                    type="text"
+                    id="destination"
+                    placeholder="Enter location"
+                    className="inputField"
+                    value={destination}
+                    onChange={(e) => setDestination(e.target.value)}
+                  />
+                </div>
+                <button type="submit" className="getWeather">
+                  <h3>Get Route Weather</h3>
+                </button>
+              </form>
+  
+              {/* Display weather data for both locations */}
+              {startWeather && destinationWeather && (
+                <div className="routeWeather">
+                  <h4>Weather at Starting Point ({startPoint}):</h4>
+                  <p>Visibility: {startWeather.visibility / 1000} km</p>
+                  <p>Forecast: {startWeather.weather[0].main}</p>
+                  <p>Wind Speed: {Math.floor(startWeather.wind.speed * 2.237)} mph</p>
+                  <p>Feels Like: {Math.floor(startWeather.main.feels_like - 273.15)}°C</p>
+  
+                  <h4>Weather at Destination ({destination}):</h4>
+                  <p>Visibility: {destinationWeather.visibility / 1000} km</p>
+                  <p>Forecast: {destinationWeather.weather[0].main}</p>
+                  <p>Wind Speed: {Math.floor(destinationWeather.wind.speed * 2.237)} mph</p>
+                  <p>Feels Like: {Math.floor(destinationWeather.main.feels_like - 273.15)}°C</p>
+                </div>
+              )}
+  
+              {/* Display car-specific recommendations */}
+              {recommendation && (
+                <div className="recommendation">
+                  <h4>Recommendations for Car Travel:</h4>
+                  <p>{recommendation}</p>
+                </div>
+              )}
+  
+              {/* Fetch and display road disruptions */}
+              <div className="roadConditions">
+              <h4>Road Conditions:</h4>
+              {roadDisruptions.length > 0 ? (
+                roadDisruptions.map((road) => (
+                  <div key={road.road}>
+                    <h5>{road.road}</h5>
+                    {road.disruptions.length > 0 ? (
+                      <ul>
+                        {road.disruptions.map((disruption, index) => (
+                          <li key={index}>
+                            <strong>{disruption.category}</strong>: {disruption.description}
+                          </li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p>No disruptions reported.</p>
+                    )}
+                  </div>
+                ))
+              ) : (
+                <p>Loading road conditions...</p>
+              )}
+            </div>
             </div>
           )}
   
@@ -732,6 +736,8 @@ const WeatherRoute = () => {
     );
   };
 
+  
+
   return (
     <>
       <Header />
@@ -740,7 +746,6 @@ const WeatherRoute = () => {
         <WeatherMetrics />
       </div>
       <VehicleWeather />
-      <RouteTracker />
     </>
   );
 };

@@ -614,24 +614,61 @@ const WeatherRoute = () => {
                   <h3>Get Route Weather</h3>
                 </button>
               </form>
-  
+
               {/* Display weather data for both locations */}
               {startWeather && destinationWeather && (
-                <div className="routeWeather">
-                  <h4>Weather at Starting Point ({startPoint}):</h4>
-                  <p>Visibility: {startWeather.visibility / 1000} km</p>
-                  <p>Forecast: {startWeather.weather[0].main}</p>
-                  <p>Wind Speed: {Math.floor(startWeather.wind.speed * 2.237)} mph</p>
-                  <p>Feels Like: {Math.floor(startWeather.main.feels_like - 273.15)}°C</p>
-  
-                  <h4>Weather at Destination ({destination}):</h4>
-                  <p>Visibility: {destinationWeather.visibility / 1000} km</p>
-                  <p>Forecast: {destinationWeather.weather[0].main}</p>
-                  <p>Wind Speed: {Math.floor(destinationWeather.wind.speed * 2.237)} mph</p>
-                  <p>Feels Like: {Math.floor(destinationWeather.main.feels_like - 273.15)}°C</p>
+              <div className="routeWeatherContainer">
+                {/* Starting Point Weather */}
+                <div className="routeWeatherSection">
+                  <h4 className="routeLocationHeader">Location: {startPoint}</h4>
+                  <div className="routeWeatherDetails">
+                    <div className="routeWeatherCard">
+                      <p className="routeWeatherTitle">Visibility</p>
+                      <p className="routeWeatherValue">{(startWeather.visibility / 1609).toFixed(1)} mi</p>
+                      <p className="routeWeatherDesc">Perfectly clear view</p>
+                    </div>
+                    <div className="routeWeatherCard">
+                      <p className="routeWeatherTitle"> Forecast</p>
+                      <p className="routeWeatherValue">{startWeather.weather[0].main}</p>
+                    </div>
+                    <div className="routeWeatherCard">
+                      <p className="routeWeatherTitle"> Wind Speed</p>
+                      <p className="routeWeatherValue">{Math.floor(startWeather.wind.speed * 2.237)} mph</p>
+                    </div>
+                    <div className="routeWeatherCard">
+                      <p className="routeWeatherTitle">Feels Like</p>
+                      <p className="routeWeatherValue">{Math.floor(startWeather.main.feels_like - 273.15)}°C</p>
+                      <p className="routeWeatherDesc">Actual: {Math.floor(startWeather.main.temp - 273.15)}°C</p>
+                    </div>
+                  </div>
                 </div>
-              )}
-  
+
+                {/* Destination Weather */}
+                <div className="routeWeatherSection">
+                  <h4 className="routeLocationHeader">Location: {destination}</h4>
+                  <div className="routeWeatherDetails">
+                    <div className="routeWeatherCard">
+                      <p className="routeWeatherTitle"> Visibility</p>
+                      <p className="routeWeatherValue">{(destinationWeather.visibility / 1609).toFixed(1)} mi</p>
+                      <p className="routeWeatherDesc">Perfectly clear view</p>
+                    </div>
+                    <div className="routeWeatherCard">
+                      <p className="routeWeatherTitle">Forecast</p>
+                      <p className="routeWeatherValue">{destinationWeather.weather[0].main}</p>
+                    </div>
+                    <div className="routeWeatherCard">
+                      <p className="routeWeatherTitle"> Wind Speed</p>
+                      <p className="routeWeatherValue">{Math.floor(destinationWeather.wind.speed * 2.237)} mph</p>
+                    </div>
+                    <div className="routeWeatherCard">
+                      <p className="routeWeatherTitle">Feels Like</p>
+                      <p className="routeWeatherValue">{Math.floor(destinationWeather.main.feels_like - 273.15)}°C</p>
+                      <p className="routeWeatherDesc">Actual: {Math.floor(destinationWeather.main.temp - 273.15)}°C</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
               {/* Display cyclist-specific recommendations */}
               {recommendation && (
                 <div className="recommendation">

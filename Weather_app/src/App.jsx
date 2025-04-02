@@ -205,39 +205,23 @@ const WeatherRoute = () => {
   
         <div className="forecast">
           <h2 className="forecastTitle">Weather for the next 5 days</h2>
-            <div className="forecastGrid">
+            
+          <div className="forecastGrid">
             {getDailyForecast().map((day, index) => {
               const date = new Date(day.dt * 1000);
               const dayName = daysOfWeek[date.getDay()];
               const temp = Math.floor(day.main.temp - 273.15);
-              const weatherIcon = day.weather[0].main;
-              
-              // Choose appropriate icon based on weather condition
-              let icon;
-              switch(weatherIcon) {
-                case "Clear":
-                  icon = clear;
-                  break;
-                case "Rain":
-                  icon = rain;
-                  break;
-                case "Snow":
-                  icon = snow;
-                  break;
-                case "Thunderstorm":
-                  icon = thunderstorm;
-                  break;
-                case "Clouds":
-                  icon = few;
-                  break;
-                default:
-                  icon = humidity; // fallback icon
-              }
+              const iconCode = day.weather[0].icon; // Get the icon code (e.g. "04d")
               
               return (
                 <div className="otherDays" key={index}>
                   <h2>{dayName}</h2>
-                  <img src={icon} alt={weatherIcon} />
+                  {/* New OpenWeatherMap icon */}
+                  <img 
+                    src={`https://openweathermap.org/img/wn/${iconCode}@2x.png`}
+                    alt={day.weather[0].description}
+                    className="forecast-icon"
+                  />
                   <h2>{temp}°C</h2>
                 </div>
               );

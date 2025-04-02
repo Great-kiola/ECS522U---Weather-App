@@ -200,18 +200,32 @@
 }
 
 .otherDays{
-  background-color: #edf3f8;
+  background-color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding: 25px;
+  padding: 20px 15px;
   border-radius: 25px;
   color: #23619a;
+  flex: 1;
+
 }
 
 .otherDays img{
-  width: 25px;
+  width: 80px;
+  height: 80px;
+  margin: 10px 0;
+  object-fit: contain;
+}
+.otherDays h2 {
+  margin: 5px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.otherDays h2:last-child {
+  font-size: 1.5rem;
+  margin-top: 5px;
 }
 
 .forecastDay.bordered {
@@ -747,9 +761,7 @@ p.windValue{
   .forecastGrid {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    margin-top: 6px;
+    gap: 15px;
     flex-wrap: wrap;
   }
   
@@ -766,11 +778,13 @@ p.windValue{
   .forecastDay.bordered {
     border: 10px solid #000;
   }
-  
-  .forecastIcon {
-    width: 34px;
-    aspect-ratio: 1.55;
-    margin-top: 35px;
+    /* Add this new rule for OpenWeatherMap icons */
+  .forecast-icon {
+    width: 60px; /* Slightly larger than your current 50px */
+    height: 60px;
+    object-fit: contain;
+    background: transparent; /* Remove any background */
+    margin: 5px 0; /* Add some spacing */
   }
   
   .forecastTemp {

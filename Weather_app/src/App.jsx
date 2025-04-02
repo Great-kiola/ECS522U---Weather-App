@@ -26,7 +26,8 @@ import defaultGif from './assets/default.gif';
 // Main WeatherRoute Component
 const WeatherRoute = () => {
 
-  const [weatherDetails, setweatherDetails] = useState(null)
+  const [weatherDetails, setWeatherDetails] = useState(null)
+  const [forecastDetails, setForecastDetails] = useState(null);
   const [val, setVal] = useState('')
 
   const API_key = "d4c1f3085a13b8325c6db3814dc45b81";
@@ -37,11 +38,23 @@ const WeatherRoute = () => {
     setVal(event.target.value);
   }
 
-  const search = () => {
-    Axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${val}&appid=${API_key}`).then((res) => {
-      setweatherDetails(res.data);
-    })
-  }
+  const search = async () => {
+    try {
+      // Current weather
+      const currentRes = await Axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${val}&appid=${API_key}`
+      );
+      setWeatherDetails(currentRes.data);
+      
+      // 5-day forecast
+      const forecastRes = await Axios.get(
+        `https://api.openweathermap.org/data/2.5/forecast?q=${val}&appid=${API_key}`
+      );
+      setForecastDetails(forecastRes.data);
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+    }
+  };
 
   const currentDate = new Date();
   const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
@@ -50,6 +63,40 @@ const WeatherRoute = () => {
   const month = months[currentDate.getMonth()];
   const dayOfMonth = currentDate.getDate();
   const formattedDate = `${dayOfWeek}, ${dayOfMonth} ${month}`;
+
+
+  const getDailyForecast = () => {
+    if (!forecastDetails) return [];
+    
+    const dailyForecasts = [];
+    const forecasts = forecastDetails.list;
+    
+    // Group forecasts by day
+    const forecastsByDay = {};
+    forecasts.forEach(forecast => {
+      const date = new Date(forecast.dt * 1000);
+      const day = date.toLocaleDateString();
+      
+      if (!forecastsByDay[day]) {
+        forecastsByDay[day] = [];
+      }
+      forecastsByDay[day].push(forecast);
+    });
+    
+    // Get one forecast per day (preferably around midday)
+    Object.keys(forecastsByDay).forEach(day => {
+      const dayForecasts = forecastsByDay[day];
+      const middayForecast = dayForecasts.find(f => {
+        const hour = new Date(f.dt * 1000).getHours();
+        return hour >= 11 && hour <= 14;
+      }) || dayForecasts[0];
+      
+      dailyForecasts.push(middayForecast);
+    });
+    
+    // Return next 5 days (excluding today if needed)
+    return dailyForecasts.slice(0, 5);
+  };
 
 
   // Header Component
@@ -159,50 +206,43 @@ const WeatherRoute = () => {
   
         <div className="forecast">
           <h2 className="forecastTitle">Weather for the next 5 days</h2>
-          <div className="forecastGrid">
-            <div className="forecastDay">
-              <img src={guage} alt="guage icon" />
-                <div className="today">
-                  <h1 className="todayDate">Mon, 25, Oct, {weatherDetails?.weather[0].main}</h1>
-                  <h3 className="details"> Feels like: <span>16</span></h3>
-                  <div className="dayGrid">
-                    <div><h3 className="details">Dew point: {weatherDetails?.wind ? weatherDetails.wind.speed : null}</h3></div>
-                    <div><h3 className="details">Visibility: {weatherDetails?.wind ? weatherDetails.wind.speed : null}</h3></div>
-                    <div><h3 className="details">humidity: {weatherDetails?.main.humidity}</h3></div>
-                    <div><h3 className="details">UV: {weatherDetails?.wind ? weatherDetails.wind.speed : null}</h3></div>
-                  </div>
+            <div className="forecastGrid">
+            {getDailyForecast().map((day, index) => {
+              const date = new Date(day.dt * 1000);
+              const dayName = daysOfWeek[date.getDay()];
+              const temp = Math.floor(day.main.temp - 273.15);
+              const weatherIcon = day.weather[0].main;
+              
+              // Choose appropriate icon based on weather condition
+              let icon;
+              switch(weatherIcon) {
+                case "Clear":
+                  icon = clear;
+                  break;
+                case "Rain":
+                  icon = rain;
+                  break;
+                case "Snow":
+                  icon = snow;
+                  break;
+                case "Thunderstorm":
+                  icon = thunderstorm;
+                  break;
+                case "Clouds":
+                  icon = few;
+                  break;
+                default:
+                  icon = humidity; // fallback icon
+              }
+              
+              return (
+                <div className="otherDays" key={index}>
+                  <h2>{dayName}</h2>
+                  <img src={icon} alt={weatherIcon} />
+                  <h2>{temp}°C</h2>
                 </div>
-            </div>
-  
-            <div className="otherDays">
-            <h2>Tue</h2>
-            <img src={humidity} alt="" />
-            <h2>50</h2>
-          </div>
-
-            <div className="otherDays">
-              <h2>Tue</h2>
-              <img src={humidity} alt="" />
-              <h2>50</h2>
-            </div>
-
-            <div className="otherDays">
-              <h2>Tue</h2>
-              <img src={humidity} alt="" />
-              <h2>50</h2>
-            </div>
-
-            <div className="otherDays">
-              <h2>Tue</h2>
-              <img src={humidity} alt="" />
-              <h2>50</h2>
-            </div>
-
-            <div className="otherDays">
-              <h2>Tue</h2>
-              <img src={humidity} alt="" />
-              <h2>50</h2>
-            </div>
+              );
+            })}
           </div>
         </div>
       </div>

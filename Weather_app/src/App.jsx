@@ -32,7 +32,6 @@ const WeatherRoute = () => {
   const API_key = "d4c1f3085a13b8325c6db3814dc45b81";
 
 
-
   const handleChange = (event) => {
     setVal(event.target.value);
   }
@@ -94,11 +93,11 @@ const WeatherRoute = () => {
 
           <div className="display--box">
             <div className="locationInfo">
+              <time className="timestamp">{formattedDate}</time>
               <div className="locationHeader">
                 <img src={pin} alt="Location" className="locationIcon" />
                 <h2 className="locationName">{weatherDetails?.name}</h2>
               </div>
-              <time className="timestamp">{formattedDate}</time>
             </div>
     
             <div className="temperature">

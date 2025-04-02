@@ -38,14 +38,9 @@ const WeatherRoute = () => {
   }
 
   const search = () => {
-
-    console.log(val)
-
     Axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${val}&appid=${API_key}`).then((res) => {
       setweatherDetails(res.data);
-      console.log(res.data)
     })
-    console.log("Hello")
   }
 
   const currentDate = new Date();
@@ -96,6 +91,49 @@ const WeatherRoute = () => {
     return (
       <div className="currentWeather">
         <div className="weatherCard" style={cardStyle}>
+
+          <div className="display--box">
+            <div className="locationInfo">
+              <div className="locationHeader">
+                <img src={pin} alt="Location" className="locationIcon" />
+                <h2 className="locationName">{weatherDetails?.name}</h2>
+              </div>
+              <time className="timestamp">{formattedDate}</time>
+            </div>
+    
+            <div className="temperature">
+              <div className="tempValue">
+                <div className="val-num">
+                  <span className="tempNumber">{weatherDetails?.main ? `${Math.floor(weatherDetails?.main.temp - 273.15)}` : null}</span>
+                  <div className="tempUnit">
+                    <span className="degree">O</span>
+                    <span className="celsius">C</span>
+                  </div>
+                </div>
+    
+                <div className="weather-condtn">
+                  <p className="weatherCondition">{weatherDetails?.weather ? weatherDetails?.weather[0].main : null}</p>
+                </div>
+              </div>
+    
+              <div className="weatherMetrics">
+                <div className="pressure">
+                  <img src={guage} alt="pressure" />
+                  <span>{weatherDetails?.main ? weatherDetails?.main.pressure : null}hPa</span>
+                </div>
+                <div className="pressure">
+                  <img src={humidity} alt="humidity" />
+                  <span>{weatherDetails?.main ? weatherDetails?.main.humidity : null}%</span>
+                </div>
+                <div className="pressure">
+                  <img src={speed} alt="speed" />
+                  <span>{weatherDetails?.wind ? `${Math.floor(weatherDetails?.wind.speed * 2.237)}` : null} mph</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
             <form className="searchBar" onSubmit={(e) => {
               e.preventDefault();
               search()
@@ -116,44 +154,7 @@ const WeatherRoute = () => {
               </button>
             </form>
   
-          <div className="locationInfo">
-            <div className="locationHeader">
-              <img src={pin} alt="Location" className="locationIcon" />
-              <h2 className="locationName">{weatherDetails?.name}</h2>
-            </div>
-            <time className="timestamp">{formattedDate}</time>
-          </div>
-  
-          <div className="temperature">
-            <div className="tempValue">
-              <div className="val-num">
-                <span className="tempNumber">{weatherDetails?.main ? `${Math.floor(weatherDetails?.main.temp - 273.15)}` : null}</span>
-                <div className="tempUnit">
-                  <span className="degree">O</span>
-                  <span className="celsius">C</span>
-                </div>
-              </div>
-  
-              <div className="weather-condtn">
-                <p className="weatherCondition">{weatherDetails?.weather ? weatherDetails?.weather[0].main : null}</p>
-              </div>
-            </div>
-  
-            <div className="weatherMetrics">
-              <div className="pressure">
-                <img src={guage} alt="pressure" />
-                <span>{weatherDetails?.main ? weatherDetails?.main.pressure : null}hPa</span>
-              </div>
-              <div className="pressure">
-                <img src={humidity} alt="humidity" />
-                <span>{weatherDetails?.main ? weatherDetails?.main.humidity : null}%</span>
-              </div>
-              <div className="pressure">
-                <img src={speed} alt="speed" />
-                <span>{weatherDetails?.wind ? `${Math.floor(weatherDetails?.wind.speed * 2.237)}` : null} mph</span>
-              </div>
-            </div>
-          </div>
+
         </div>
   
         <div className="forecast">
@@ -454,12 +455,13 @@ const WeatherRoute = () => {
   
     const API_key = "d4c1f3085a13b8325c6db3814dc45b81";
   
+    //! WHAT DOES THIS DO????? 
     // Function to determine if it's safe for cyclists
-    const isSafeForCyclists = (windSpeed, temp) => {
-      if (windSpeed > 20) return "Not safe: High wind speeds.";
-      if (temp < 0) return "Not safe: Freezing temperatures.";
-      return "Safe to travel.";
-    };
+    // const isSafeForCyclists = (windSpeed, temp) => {
+    //   if (windSpeed > 20) return "Not safe: High wind speeds.";
+    //   if (temp < 0) return "Not safe: Freezing temperatures.";
+    //   return "Safe to travel.";
+    // };
   
     // Function to fetch weather data for a location
     const fetchWeatherData = async (location) => {

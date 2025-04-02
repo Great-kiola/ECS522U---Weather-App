@@ -3,11 +3,11 @@ import React, { useState, useEffect } from 'react';
 
 // Firebase Imports
 import { auth } from './firebase'; // confirm path
-import { 
+import {
   signInWithEmailAndPassword,
   GoogleAuthProvider,
   FacebookAuthProvider,
-  signInWithPopup 
+  signInWithPopup
 } from 'firebase/auth';
 
 // Other imports
@@ -20,7 +20,7 @@ import { Link } from 'react-router-dom';
 export default function Login() {
   const initialForm = {
     email: "",
-    password: "" 
+    password: ""
   };
 
   // State management
@@ -29,8 +29,8 @@ export default function Login() {
   const [isSubmit, setIsSubmit] = useState(false);
 
   const handleChange = (e) => {
-    const {name, value} = e.target;
-    setForm({...form, [name]: value});
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
   };
 
   const handleSubmit = (e) => {
@@ -79,13 +79,13 @@ export default function Login() {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if(!value.password){
+    if (!value.password) {
       errors.password = "Password is required";
     }
 
-    if(!value.email){
+    if (!value.email) {
       errors.email = "Email is required";
-    } else if(!regex.test(value.email)) {
+    } else if (!regex.test(value.email)) {
       errors.email = "Email is invalid";
     }
 
@@ -100,68 +100,70 @@ export default function Login() {
 
   return (
     <>
-      <div className='card'>
-        <div className='weatherLogo'>
-          <img src={logo} alt="logo" />
-          <h2>Weatherly</h2>
-        </div>
-
-        <h1 className='title'>Welcome Back!</h1>
-
-        <form onSubmit={handleSubmit}>
-          <div className='inputs'>
-            <div className='infoBar'>
-              <label>Email</label>
-              <p className={formErr.email ? 'err' : ''}>{formErr.email}</p>
-            </div>
-
-            <input 
-              type="email" 
-              placeholder='******@anymail.com' 
-              className={formErr.email ? 'inputErr' : ''}
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-            />
-
-            <div className='infoBar'>
-              <label>Password</label>
-              <p className={formErr.password ? "err" : ''}> {formErr.password}</p>
-            </div>
-
-            <input 
-              type="password" 
-              placeholder='Enter your password' 
-              className={formErr.password ? 'inputErr' : ''}
-              name="password"
-              value={form.password} 
-              onChange={handleChange}
-            />
+      <div className="master--div">
+        <div className='card'>
+          <div className='weatherLogo'>
+            <img src={logo} alt="logo" />
+            <h2>Weatherly</h2>
           </div>
 
-          <button type='submit'> Sign in </button>
-          {formErr.auth && <p className='err'>{formErr.auth}</p>}
-        </form>
+          <h1 className='title'>Welcome Back!</h1>
 
-        <div className="divider">or</div>
+          <form onSubmit={handleSubmit}>
+            <div className='inputs'>
+              <div className='infoBar'>
+                <label>Email</label>
+                <p className={formErr.email ? 'err' : ''}>{formErr.email}</p>
+              </div>
 
-        <div className='altOptions'>
-          <button onClick={googleSignIn}>
-            <img src={google_icon} alt="google logo" />
-            Sign in with Google
-          </button>
+              <input
+                type="email"
+                placeholder='******@anymail.com'
+                className={formErr.email ? 'inputErr' : ''}
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+              />
 
-          <button onClick={facebookSignIn}>
-            <img src={facebook_icon} alt="facebook logo" />
-            Sign in with Facebook
-          </button>
+              <div className='infoBar'>
+                <label>Password</label>
+                <p className={formErr.password ? "err" : ''}> {formErr.password}</p>
+              </div>
+
+              <input
+                type="password"
+                placeholder='Enter your password'
+                className={formErr.password ? 'inputErr' : ''}
+                name="password"
+                value={form.password}
+                onChange={handleChange}
+              />
+            </div>
+
+            <button type='submit'> Sign in </button>
+            {formErr.auth && <p className='err'>{formErr.auth}</p>}
+          </form>
+
+          <div className="divider">or</div>
+
+          <div className='altOptions'>
+            <button onClick={googleSignIn}>
+              <img src={google_icon} alt="google logo" />
+              Sign in with Google
+            </button>
+
+            <button onClick={facebookSignIn}>
+              <img src={facebook_icon} alt="facebook logo" />
+              Sign in with Facebook
+            </button>
+          </div>
+
+          <h3>Don't have an account?
+            <span>
+              <Link to="/signup">Sign Up</Link>
+            </span>
+          </h3>
         </div>
-
-        <h3>Don't have an account? 
-          <span>
-            <Link to="/signup">Sign Up</Link>
-          </span>
-        </h3>
       </div>
     </>
   );

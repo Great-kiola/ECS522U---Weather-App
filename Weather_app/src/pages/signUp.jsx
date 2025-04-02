@@ -105,83 +105,85 @@ export default function SignUp() {
 
     return (
         <>
-            <div className='card'>
-                <div className='weatherLogo'>
-                    <img src={logo} alt="logo" />
-                    <h2>Weatherly</h2>
-                </div>
-
-                <h1 className='title'>Create your account</h1>
-
-                <div className='altOptions'>
-                    <button onClick={googleSignUp}>
-                        <img src={google_icon} alt="google logo" />
-                        Sign up with Google
-                    </button>
-                </div>
-
-                <div className="divider">or</div>
-
-                <form onSubmit={handleSubmit}>
-                    <div className='inputs'>
-
-                        <div className='infoBar'>
-                            <label>First Name</label>
-                            <p className={formErr.name ? "err" : ''}> {formErr.name}</p>
-                        </div>
-                        <input
-                            type="text"
-                            placeholder='Enter your name'
-                            className={formErr.name ? 'inputErr' : ''}
-                            name="name"
-                            value={form.name}
-                            onChange={handleChange}
-                        />
-
-                        <div className='infoBar'>
-                            <label>Email</label>
-                            <p className={formErr.email ? 'err' : ''}>{formErr.email}</p>
-                        </div>
-                        <input
-                            type="email"
-                            placeholder='******@anymail.com'
-                            className={formErr.email || emailValid === false ? 'inputErr' : ''}
-                            name="email"
-                            value={form.email}
-                            onChange={handleChange}
-                        />
-                        {form.email && emailValid === false && (
-                            <p className="err">Invalid email format</p>
-                        )}
-
-                        <div className='infoBar'>
-                            <label>Password</label>
-                            <p className={formErr.password ? "err" : ''}> {formErr.password}</p>
-                        </div>
-                        <input
-                            type="password"
-                            placeholder='Enter your password'
-                            className={formErr.password ? 'inputErr' : ''}
-                            name="password"
-                            value={form.password}
-                            onChange={handleChange}
-                        />
-                        {form.password && (
-                            <p className={`passwordStrength ${passwordStrength.toLowerCase()}`}>
-                                Password Strength: {passwordStrength}
-                            </p>
-                        )}
+            <div className="master--div">
+                <div className='card'>
+                    <div className='weatherLogo'>
+                        <img src={logo} alt="logo" />
+                        <h2>Weatherly</h2>
                     </div>
 
-                    <button type='submit'> Sign Up </button>
-                    {formErr.auth && <p className='err'>{formErr.auth}</p>}
-                </form>
+                    <h1 className='title'>Create your account</h1>
 
-                <h3>Already have an account?
-                    <span>
-                        <Link to="/Login">Log in</Link>
-                    </span>
-                </h3>
+                    <div className='altOptions'>
+                        <button onClick={googleSignUp}>
+                            <img src={google_icon} alt="google logo" />
+                            Sign up with Google
+                        </button>
+                    </div>
+
+                    <div className="divider">or</div>
+
+                    <form onSubmit={handleSubmit}>
+                        <div className='inputs'>
+
+                            <div className='infoBar'>
+                                <label>First Name</label>
+                                <p className={formErr.name ? "err" : ''}> {formErr.name}</p>
+                            </div>
+                            <input
+                                type="text"
+                                placeholder='Enter your name'
+                                className={formErr.name ? 'inputErr' : ''}
+                                name="name"
+                                value={form.name}
+                                onChange={handleChange}
+                            />
+
+                            <div className='infoBar'>
+                                <label>Email</label>
+                                <p className={formErr.email ? 'err' : ''}>{formErr.email}</p>
+                            </div>
+                            <input
+                                type="email"
+                                placeholder='******@anymail.com'
+                                className={formErr.email || emailValid === false ? 'inputErr' : ''}
+                                name="email"
+                                value={form.email}
+                                onChange={handleChange}
+                            />
+                            {form.email && emailValid === false && (
+                                <p className="err">Invalid email format</p>
+                            )}
+
+                            <div className='infoBar'>
+                                <label>Password</label>
+                                <p className={formErr.password ? "err" : ''}> {formErr.password}</p>
+                            </div>
+                            <input
+                                type="password"
+                                placeholder='Enter your password'
+                                className={formErr.password ? 'inputErr' : ''}
+                                name="password"
+                                value={form.password}
+                                onChange={handleChange}
+                            />
+                            {form.password && (
+                                <p className={`passwordStrength ${passwordStrength.toLowerCase()}`}>
+                                    Password Strength: {passwordStrength}
+                                </p>
+                            )}
+                        </div>
+
+                        <button type='submit'> Sign Up </button>
+                        {formErr.auth && <p className='err'>{formErr.auth}</p>}
+                    </form>
+
+                    <h3>Already have an account?
+                        <span>
+                            <Link to="/Login">Log in</Link>
+                        </span>
+                    </h3>
+                </div>
             </div>
         </>
     );

@@ -9,6 +9,14 @@ import speed from "./assets/speed-meter-svgrepo-com.svg"
 import humidity from "./assets/humidity-svgrepo-com.svg"
 import pin from "./assets/location-pin-svgrepo-com.svg"
 
+// Weather condition GIFs
+import clear from './assets/clear.gif';
+import rain from './assets/rain.gif';
+import snow from './assets/snow.gif';
+import thunderstorm from './assets/thunderstorm.gif';
+import few from './assets/few.gif';
+import defaultGif from './assets/default.gif';
+
 
 // const timestamp = 1691622800; // start with a Unix timestamp
 // const date = new Date(timestamp);
@@ -60,145 +68,145 @@ const WeatherRoute = () => {
   );
 
   // Current Weather Component
-  const CurrentWeather = () => (
-    <div className="currentWeather">
 
-      <div className="weatherCard">
-          <form className="searchBar" onSubmit={(e) => {
-            e.preventDefault();
-            search()
-          }}>
-            <input
-              type="text"
-              placeholder="Search for a different location"
-              className="searchInput"
-              onChange={handleChange}
-              value={val}
-
-              autoFocus
-            />
-            <button type="submit" className="search--Btn">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4ec8eb5f912c3be897baec8ed140a2642e8f0c3?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
-                alt="Search"
+  const CurrentWeather = () => {
+    let cardStyle = {};
+  
+    if (weatherDetails && weatherDetails.weather && weatherDetails.weather[0]) {
+      const weatherCondition = weatherDetails.weather[0].main;
+      let bgGif;
+  
+      if (weatherCondition === "Clear") bgGif = clear;
+      else if (weatherCondition === "Rain") bgGif = rain;
+      else if (weatherCondition === "Snow") bgGif = snow;
+      else if (weatherCondition === "Thunderstorm") bgGif = thunderstorm;
+      else if (weatherCondition === "Clouds") bgGif = few;
+      else bgGif = defaultGif;
+  
+      cardStyle = {
+        backgroundImage: `url(${bgGif})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      };
+    } else {
+      cardStyle = { backgroundColor: '#93c1ec' };
+    }
+  
+    return (
+      <div className="currentWeather">
+        <div className="weatherCard" style={cardStyle}>
+            <form className="searchBar" onSubmit={(e) => {
+              e.preventDefault();
+              search()
+            }}>
+              <input
+                type="text"
+                placeholder="Search for a different location"
+                className="searchInput"
+                onChange={handleChange}
+                value={val}
+                autoFocus
               />
-            </button>
-          </form>
-
-        <div className="locationInfo">
-          <div className="locationHeader">
-            <img src={pin} alt="Location" className="locationIcon" />
-            <h2 className="locationName">{weatherDetails?.name}</h2>
+              <button type="submit" className="search--Btn">
+                <img
+                  src="https://cdn.builder.io/api/v1/image/assets/TEMP/b4ec8eb5f912c3be897baec8ed140a2642e8f0c3?placeholderIfAbsent=true&apiKey=783f43a1f88d4776adadcdcf6ab220ed"
+                  alt="Search"
+                />
+              </button>
+            </form>
+  
+          <div className="locationInfo">
+            <div className="locationHeader">
+              <img src={pin} alt="Location" className="locationIcon" />
+              <h2 className="locationName">{weatherDetails?.name}</h2>
+            </div>
+            <time className="timestamp">{formattedDate}</time>
           </div>
-
-
-          <time className="timestamp">{formattedDate}</time>
-        </div>
-        <div className="temperature">
-          <div className="tempValue">
-            <div className="val-num">
-              <span className="tempNumber">{weatherDetails?.main ? `${Math.floor(weatherDetails?.main.temp - 273.15)}` : null}</span>
-              <div className="tempUnit">
-                <span className="degree">O</span>
-                <span className="celsius">C</span>
+  
+          <div className="temperature">
+            <div className="tempValue">
+              <div className="val-num">
+                <span className="tempNumber">{weatherDetails?.main ? `${Math.floor(weatherDetails?.main.temp - 273.15)}` : null}</span>
+                <div className="tempUnit">
+                  <span className="degree">O</span>
+                  <span className="celsius">C</span>
+                </div>
+              </div>
+  
+              <div className="weather-condtn">
+                <p className="weatherCondition">{weatherDetails?.weather ? weatherDetails?.weather[0].main : null}</p>
               </div>
             </div>
-
-            <div className="weather-condtn">
-              <p className="weatherCondition">{weatherDetails?.weather ? weatherDetails?.weather[0].main : null}</p>
-
+  
+            <div className="weatherMetrics">
+              <div className="pressure">
+                <img src={guage} alt="pressure" />
+                <span>{weatherDetails?.main ? weatherDetails?.main.pressure : null}hPa</span>
+              </div>
+              <div className="pressure">
+                <img src={humidity} alt="humidity" />
+                <span>{weatherDetails?.main ? weatherDetails?.main.humidity : null}%</span>
+              </div>
+              <div className="pressure">
+                <img src={speed} alt="speed" />
+                <span>{weatherDetails?.wind ? `${Math.floor(weatherDetails?.wind.speed * 2.237)}` : null} mph</span>
+              </div>
             </div>
-
           </div>
-          <div className="weatherMetrics">
+        </div>
+  
+        <div className="forecast">
+          <h2 className="forecastTitle">Weather for the next 5 days</h2>
+          <div className="forecastGrid">
+            <div className="forecastDay">
+              <img src={guage} alt="guage icon" />
+                <div className="today">
+                  <h1 className="todayDate">Mon, 25, Oct, {weatherDetails?.weather[0].main}</h1>
+                  <h3 className="details"> Feels like: <span>16</span></h3>
+                  <div className="dayGrid">
+                    <div><h3 className="details">Dew point: {weatherDetails?.wind ? weatherDetails.wind.speed : null}</h3></div>
+                    <div><h3 className="details">Visibility: {weatherDetails?.wind ? weatherDetails.wind.speed : null}</h3></div>
+                    <div><h3 className="details">humidity: {weatherDetails?.main.humidity}</h3></div>
+                    <div><h3 className="details">UV: {weatherDetails?.wind ? weatherDetails.wind.speed : null}</h3></div>
+                  </div>
+                </div>
+            </div>
+  
+            <div className="otherDays">
+            <h2>Tue</h2>
+            <img src={humidity} alt="" />
+            <h2>50</h2>
+          </div>
 
-            <div className="pressure">
-              <img src={guage} alt="pressure" />
-              <span>{weatherDetails?.main ? weatherDetails?.main.pressure : null}hPa</span>
+            <div className="otherDays">
+              <h2>Tue</h2>
+              <img src={humidity} alt="" />
+              <h2>50</h2>
             </div>
 
-            <div className="pressure">
-              <img src={humidity} alt="humidity" />
-              <span>{weatherDetails?.main ? weatherDetails?.main.humidity : null}%</span>
+            <div className="otherDays">
+              <h2>Tue</h2>
+              <img src={humidity} alt="" />
+              <h2>50</h2>
             </div>
 
-            <div className="pressure">
-              <img src={speed} alt="speed" />
-              <span>{weatherDetails?.wind ? `${Math.floor(weatherDetails?.wind.speed *2.237)}` : null} mph</span>
+            <div className="otherDays">
+              <h2>Tue</h2>
+              <img src={humidity} alt="" />
+              <h2>50</h2>
             </div>
 
-
-
+            <div className="otherDays">
+              <h2>Tue</h2>
+              <img src={humidity} alt="" />
+              <h2>50</h2>
+            </div>
           </div>
         </div>
       </div>
-      {/* Forecast */}
-      <div className="forecast">
-        <h2 className="forecastTitle">Weather for the next 5 days</h2>
-        <div className="forecastGrid">
-          <div className="forecastDay">
-            <img src={guage} alt="guage icon" />
-
-              <div className="today">
-                <h1 className="todayDate">Mon, 25, Oct,  {weatherDetails?.weather[0].main} </h1>
-                <h3 className="details"> Feels like: <span> 16 </span></h3>
-
-                <div className="dayGrid">
-                  <div>
-                    <h3 className="details">Dew point: {weatherDetails?.wind ? weatherDetails?.wind.speed : null}</h3>
-                  </div>
-                  <div>
-                    <h3 className="details">Visibility: {weatherDetails?.wind ? weatherDetails?.wind.speed : null}</h3>
-                  </div>
-                  <div>
-                    <h3 className="details">humidity: {weatherDetails?.main.humidity}</h3>
-                  </div>
-                  <div>
-                    <h3 className="details">UV: {weatherDetails?.wind ? weatherDetails?.wind.speed : null}</h3>
-                  </div>
-                </div>
-                <div className="daySection">
-                  
-                </div>
-
-                <div className="daySection">
-                </div>
-              </div>
-          </div>
-
-          <div className="otherDays">
-            <h2>Tue</h2>
-            <img src={humidity} alt="" />
-            <h2>50</h2>
-          </div>
-
-          <div className="otherDays">
-            <h2>Tue</h2>
-            <img src={humidity} alt="" />
-            <h2>50</h2>
-          </div>
-
-          <div className="otherDays">
-            <h2>Tue</h2>
-            <img src={humidity} alt="" />
-            <h2>50</h2>
-          </div>
-
-          <div className="otherDays">
-            <h2>Tue</h2>
-            <img src={humidity} alt="" />
-            <h2>50</h2>
-          </div>
-
-          <div className="otherDays">
-            <h2>Tue</h2>
-            <img src={humidity} alt="" />
-            <h2>50</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
+  };
 
   // Weather Metrics Component
   const WeatherMetrics = () => (

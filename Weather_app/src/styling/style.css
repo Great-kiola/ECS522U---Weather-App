@@ -27,13 +27,16 @@
 
 .display--box{
   background-color: #fff;
-  width: 700px;
+  width: 400px;
   border-radius: 20px;
-  padding: 40px 20px;
+  padding: 10px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
   position: absolute;
   bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   color: #000000;
+  box-sizing: border-box;
 
 }
 
@@ -551,9 +554,7 @@ p.windValue{
 
 .locationName {
   color: #000;
-  font-size: 1.5rem;
   font-weight: 700;
-  margin-bottom: -10px;
 }
 
 .locationMetrics {
@@ -575,6 +576,7 @@ p.windValue{
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 100px;
 }
 
 .pressure img{
@@ -726,9 +728,11 @@ p.windValue{
     color: darkblue;
     margin-top: 55px;
     display: flex;
-    gap: 56px;
+    gap: 20px;
     font-size: 18px;
     font-weight: 600;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .forecast {

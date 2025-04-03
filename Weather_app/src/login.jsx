@@ -160,7 +160,7 @@ export default function Login() {
 
           <h3>Don't have an account?
             <span>
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/">Sign Up</Link>
             </span>
           </h3>
         </div>

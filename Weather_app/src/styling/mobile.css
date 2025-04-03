@@ -1,0 +1,244 @@
+@media (max-width: 768px) {
+    body {
+      font-size: 14px;
+    }
+  
+    .header {
+      padding: 10px 20px;
+      height: auto;
+      flex-direction: column;
+      text-align: center;
+      gap: 10px;
+      border-radius: 0;
+    }
+  
+    .title {
+      font-size: 1.5rem;
+    }
+  
+    /* Main content layout */
+    .weatherContent {
+      flex-direction: column;
+      padding: 10px;
+      margin-top: 10px;
+      gap: 15px;
+    }
+  
+    /* Current weather card */
+    .currentWeather {
+      padding: 0;
+      width: 100%;
+      position: relative;
+    }
+  
+    .weatherCard {
+      height: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+  
+    .searchBar {
+      order: -1; 
+      margin-bottom: 15px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+  
+    .searchInput {
+      width: 100%;
+      padding: 10px 15px;
+      border-radius: 20px;
+      border: 1px solid #ddd;
+    }
+  
+    .display--box {
+      position: relative;
+      margin-top: 0;
+      width: 100%;
+      padding: 15px;
+      box-sizing: border-box;
+    }
+  
+    .locationInfo {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  
+    .timestamp {
+      position: static;
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 5px;
+    }
+  
+    .locationHeader {
+      margin-top: 5px;
+    }
+  
+    .locationName {
+      font-size: 1.5rem;
+      margin: 0;
+    }
+  
+    /* Temperature display */
+    .temperature {
+      margin: 15px 0;
+    }
+  
+    .tempNumber {
+      font-size: 80px;
+    }
+  
+    .weatherCondition {
+      font-size: 1.8rem;
+      margin-top: 5px;
+    }
+  
+    .weatherMetrics {
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    /* Forecast section */
+    .forecast {
+      padding: 0 10px;
+      margin-top: 20px;
+    }
+
+    .forecastTitle,
+    .vehicleTitle,
+    .routeLocationHeader,
+    .locationInput label h3 {
+        color: #23619a;
+    }
+  
+    .forecastTitle {
+      font-size: 1.5rem;
+      margin-left: 0;
+      text-align: center;
+    }
+  
+    .forecastGrid {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .otherDays {
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 15px;
+      align-items: center;
+    }
+  
+    .otherDays img {
+      width: 50px;
+      height: 50px;
+      margin: 0;
+    }
+  
+    /* Metrics container */
+    .metricsContainer {
+      width: 100%;
+      grid-template-columns: 1fr;
+      margin-right: 0;
+      padding: 10px;
+    }
+  
+    .metricRow {
+      min-height: auto;
+      padding: 20px;
+    }
+  
+    .sunriseSunset {
+      padding: 20px;
+    }
+  
+    p.windValue {
+      font-size: 2rem;
+    }
+  
+    /* Vehicle weather section */
+    .vehicleWeather {
+      padding: 15px;
+      margin: 15px 0;
+    }
+  
+    .vehicleButtons {
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+  
+    .vehicleButton {
+      flex: 1 1 100px;
+      padding: 8px 10px;
+      font-size: 14px;
+    }
+  
+    /* Route weather container */
+    .routeWeatherContainer {
+      padding: 15px;
+    }
+  
+    .routeWeatherDetails {
+      flex-direction: column;
+      gap: 10px;
+    }
+  
+    .routeWeatherCard {
+      flex: 1 1 100%;
+      margin-bottom: 10px;
+      padding: 15px;
+    }
+  
+    /* Form elements */
+    .routeForm {
+      padding: 20px 15px;
+    }
+  
+    .locationInput {
+      margin-bottom: 15px;
+    }
+  
+    .inputField {
+      padding: 8px 15px;
+    }
+  
+    .getWeather {
+      padding: 8px 20px 15px;
+      width: 100%;
+    }
+  
+    /* Weather warnings */
+    .warnings {
+      padding: 20px 15px;
+    }
+  
+    .warningDivider {
+      width: 100%;
+    }
+  
+    .warningMessage {
+      padding: 15px;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    /* Location weather */
+    .locationWeather {
+      padding: 15px;
+    }
+  
+    .locationTitle {
+      font-size: 1.5rem;
+      padding: 5px 20px;
+    }
+  
+    .locationMetrics {
+      flex-direction: column;
+      gap: 15px;
+    }
+  }

@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 
 import "../src/styling/style.css";
+import "../src/styling/mobile.css";
 import guage from "./assets/gauge-medium-svgrepo-com.svg"
 import speed from "./assets/speed-meter-svgrepo-com.svg"
 import humidity from "./assets/humidity-svgrepo-com.svg"

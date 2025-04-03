@@ -442,6 +442,10 @@ p.windValue{
   margin-bottom: 28px;
 }
 
+.locationInput label h3 {
+  color: #23619a;
+}
+
 .locationInput label {
   display: block;
   margin-bottom: 10px;

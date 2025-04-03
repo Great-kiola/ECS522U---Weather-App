@@ -1,6 +1,7 @@
 import React from "react";
 import Axios from "axios";
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 
 import "../src/styling/style.css";
@@ -102,9 +103,18 @@ const WeatherRoute = () => {
   // Header Component
   const Header = () => (
     <header className="header">
-      <h1 className="title">
-        <span className="titleHighlight">Weather</span>Route
-      </h1>
+      <div className="title">
+        <h1>
+          <span className="titleHighlight">Weather</span>Route
+        </h1>
+      </div>
+
+      <div>
+        <button className="log--out">
+          <Link to="/Login">LogOut</Link>
+        </button>
+      </div>
+
       
     </header>
   );

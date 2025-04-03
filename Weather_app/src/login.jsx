@@ -26,7 +26,7 @@ export default function Login() {
   // State management
   const [form, setForm] = useState(initialForm);
   const [formErr, setFormErr] = useState({});
-  const [isSubmit, setIsSubmit] = useState(false);
+  // const [isSubmit, setIsSubmit] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -36,12 +36,12 @@ export default function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormErr(validate(form));
-    setIsSubmit(true);
+    // setIsSubmit(true);
 
     signInWithEmailAndPassword(auth, form.email, form.password)
       .then((userCredential) => {
         console.log("User logged in:", userCredential.user);
-        window.location.href = "/";
+        window.location.href = "/Home";
       })
       .catch((error) => {
         console.error("Login error:", error.message);
@@ -55,7 +55,7 @@ export default function Login() {
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log("Google login success:", result.user);
-        window.location.href = "/";
+        window.location.href = "/Home";
       })
       .catch((error) => {
         console.error("Google sign-in error:", error.message);
@@ -68,7 +68,7 @@ export default function Login() {
     signInWithPopup(auth, provider)
       .then((result) => {
         console.log("Facebook login success:", result.user);
-        window.location.href = "/";
+        window.location.href = "/Home";
       })
       .catch((error) => {
         console.error("Facebook sign-in error:", error.message);

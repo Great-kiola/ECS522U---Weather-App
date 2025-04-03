@@ -22,7 +22,7 @@ export default function SignUp() {
     // State management
     const [form, setForm] = useState(initialForm);
     const [formErr, setFormErr] = useState({});
-    const [isSubmit, setIsSubmit] = useState(false);
+    // const [isSubmit, setIsSubmit] = useState(false);
     const [emailValid, setEmailValid] = useState(null);
     const [passwordStrength, setPasswordStrength] = useState('');
 
@@ -49,13 +49,13 @@ export default function SignUp() {
     const handleSubmit = (e) => {
         e.preventDefault();
         setFormErr(validate(form));
-        setIsSubmit(true);
+        // setIsSubmit(true);
 
         if (Object.keys(validate(form)).length === 0) {
             createUserWithEmailAndPassword(auth, form.email, form.password)
                 .then((userCredential) => {
                     console.log('User is signed up:', userCredential.user);
-                    window.location.href = "/";
+                    window.location.href = "/Home";
                 })
                 .catch((error) => {
                     console.error('Signup error:', error.message);
@@ -70,7 +70,7 @@ export default function SignUp() {
         signInWithPopup(auth, provider)
             .then((result) => {
                 console.log("Google Sign Up successful!:", result.user);
-                window.location.href = "/";
+                window.location.href = "/Home";
             })
             .catch((error) => {
                 console.error("Error with signing up :( ):", error.message);

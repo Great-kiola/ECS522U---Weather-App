@@ -12,8 +12,9 @@
   align-items: center;
   gap: 20px;
   font-weight: 700;
-  height: 30px;
+  /* height: 20px; */
 }
+
 
 .title {
   font-size: 1.7rem;
